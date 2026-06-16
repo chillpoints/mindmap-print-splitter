@@ -234,7 +234,7 @@ TRANSLATIONS = {
         "optimize_btn": "Optimiser les coutures",
         "action_group_title": "Actions",
         "btn_reset": "Réinitialiser la grille",
-        "export_btn": "Générer PDF",
+        "btn_export": "Générer PDF",
         "view_title_a": "Aperçu avant impression - Page Unique",
         "view_title_b": "Éditeur de division de tuiles interactif",
         "status_ready": "Prêt. Chargez une image ou un PDF.",
@@ -288,12 +288,12 @@ TRANSLATIONS = {
         "lbl_rows": "Строки (Y):",
         "lock_x": "Блокировать Выравнивание X",
         "lock_y": "Блокировать Выравнивание Y",
-        "paper_scale": "Масштаб Бумаги: {val}%",
+        "lbl_page_scale": "Масштаб Бумаги: {val}%",
         "autofit_btn": "Автоподбор под размер изображения",
         "optimize_btn": "Оптимизировать швы",
         "action_group_title": "Действия",
         "btn_reset": "Сбросить Сетку Страниц",
-        "export_btn": "Создать PDF",
+        "btn_export": "Создать PDF",
         "view_title_a": "Предпросмотр - Одностраничный макет",
         "view_title_b": "Интерактивный редактор разбивки страниц",
         "status_ready": "Готово. Загрузите изображение или PDF.",
@@ -342,17 +342,17 @@ TRANSLATIONS = {
         "layout_group_title": "التنسيق وتغيير الحجم",
         "radio_mode_a": "الوضع A: تغيير الحجم كنسبة مئوية",
         "radio_mode_b": "الوضع B: تقسيم على X x Y صفحات",
-        "scale_factor": "نسبة الحجم:",
-        "cols": "الأعمدة (X):",
-        "rows": "الصفوف (Y):",
+        "lbl_scale_factor": "نسبة الحجم:",
+        "lbl_cols": "الأعمدة (X):",
+        "lbl_rows": "الصفوف (Y):",
         "lock_x": "قفل محاذاة X",
         "lock_y": "قفل محاذاة Y",
-        "paper_scale": "نسبة حجم الورقة: {val}%",
+        "lbl_page_scale": "نسبة حجم الورقة: {val}%",
         "autofit_btn": "ملاءمة تلقائية لتغطية الصورة",
         "optimize_btn": "تحسين الفواصل (تجنب القطع)",
         "action_group_title": "الإجراءات",
         "btn_reset": "إعادة تعيين تخطيط الشبكة",
-        "export_btn": "تصدير PDF",
+        "btn_export": "تصدير PDF",
         "view_title_a": "معاينة الطباعة - صفحة واحدة",
         "view_title_b": "محرر تقسيم الصفحات التفاعلي",
         "status_ready": "جاهز. يرجى تحميل صورة أو ملف PDF.",
@@ -1070,10 +1070,80 @@ class MainWindow(QMainWindow):
         lang = self.current_lang
         t = TRANSLATIONS[lang]
         
+        # Override Style menu title (settings/style) and options
+        menu_theme_titles = {
+            "zh": "样式",
+            "en": "Style",
+            "ja": "スタイル",
+            "fr": "Style",
+            "ru": "Стиль",
+            "ar": "النمط"
+        }
+        theme_names = {
+            "zh": {
+                "dark": "现代暗黑 (Modern Dark)",
+                "light": "经典明亮 (Classic Light)",
+                "nordic": "北欧极地蓝 (Nordic Blue)",
+                "forest": "森林绿意 (Forest Green)",
+                "matrix": "黑客帝国 (Matrix Amber)",
+                "custom": "自定义 CSS (Custom QSS)..."
+            },
+            "en": {
+                "dark": "Modern Dark",
+                "light": "Classic Light",
+                "nordic": "Nordic Blue",
+                "forest": "Forest Green",
+                "matrix": "Matrix Amber",
+                "custom": "Custom CSS..."
+            },
+            "ja": {
+                "dark": "モダンダーク",
+                "light": "クラシックライト",
+                "nordic": "ノルディックブルー",
+                "forest": "フォレストグリーン",
+                "matrix": "マトリックスアンバー",
+                "custom": "カスタムQSS..."
+            },
+            "fr": {
+                "dark": "Sombre Moderne",
+                "light": "Clair Classique",
+                "nordic": "Bleu Nordique",
+                "forest": "Vert Forêt",
+                "matrix": "Ambre Matrice",
+                "custom": "QSS Personnalisé..."
+            },
+            "ru": {
+                "dark": "Современный темный",
+                "light": "Классический светлый",
+                "nordic": "Северный синий",
+                "forest": "Лесной зеленый",
+                "matrix": "Янтарная матрица",
+                "custom": "Пользовательский QSS..."
+            },
+            "ar": {
+                "dark": "مظلم حديث",
+                "light": "مضيء كلاسيكي",
+                "nordic": "أزرق شمالي",
+                "forest": "أخضر غابة",
+                "matrix": "كهرماني مصفوفة",
+                "custom": "QSS مخصص..."
+            }
+        }
+        
         # Menu Bar
         self.menu_settings.setTitle(t["menu_settings"])
         self.menu_language.setTitle(t["menu_language"])
-        self.menu_theme.setTitle(t["menu_theme"])
+        
+        theme_title = menu_theme_titles.get(lang, "Style")
+        self.menu_theme.setTitle(theme_title)
+        
+        t_theme = theme_names.get(lang, theme_names["en"])
+        self.action_theme_dark.setText(t_theme["dark"])
+        self.action_theme_light.setText(t_theme["light"])
+        self.action_theme_nordic.setText(t_theme["nordic"])
+        self.action_theme_forest.setText(t_theme["forest"])
+        self.action_theme_matrix.setText(t_theme["matrix"])
+        self.action_theme_custom.setText(t_theme["custom"])
         
         # Sidebar Groups
         self.file_group.setTitle(t["file_group_title"])
