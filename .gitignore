@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyInstaller
+#  Usually these files are written by a python script, you can list them
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# SPEC files
+*.spec
+
+# PDF/Images outputs
+*.pdf
+*.png
+*.jpg
+*.jpeg
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# IDE / System
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
