@@ -32,6 +32,7 @@
 1. **多列流式排版网格 (Multi-column Flow Layout)**：针对宽度极大的横向思维导图，提供 Z 字形自动流式分页裁剪并拼合装订的方案。
 2. **可视化交互接缝线拖拽**：在画布上直接通过鼠标悬停 and 拖拽虚线来微调局部接缝边界，而不需要拖拽整张纸。
 3. **自定义纸张模版管理**：支持将常用的自定义长宽与边距参数保存为快捷模版，方便下次直接套用。
+4. **多格式导出支持 (Word / PPT 等)**：扩展导出目标格式，支持将切分裁剪后的图块自动插入/排版至 Word 文档 (.docx) 或 PPT 幻灯片 (.pptx) 的各个页面中，便于集成至办公报告。
 
 ### 🚀 运行与启动
 确保您的系统已安装 Python 3.10+，然后安装依赖：
@@ -73,6 +74,7 @@ The following features are documented in the maintenance block for future iterat
 1. **Multi-column Flow Layout wrapping**: Support split grid wrapping for extremely wide mind maps in a Z-pattern, managing physical seam offsets automatically.
 2. **Interactive Seam Line Dragging**: Introduce visual dashed seam lines that can be directly dragged on the canvas to fine-tune individual tile borders instead of moving entire page items.
 3. **Custom Paper Profile Templates**: Save and load custom sizes and layouts as reusable presets.
+4. **Multi-Format Export (Word, PPT, etc.)**: Expand export formats to allow embedding the sliced image tiles automatically into Microsoft Word (.docx) or PowerPoint (.pptx) documents.
 
 ### 🚀 Getting Started
 Ensure Python 3.10+ is installed, then install requirements:
