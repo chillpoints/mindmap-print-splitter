@@ -10,18 +10,20 @@ from PySide6.QtWidgets import (
     QPushButton, QComboBox, QCheckBox, QDoubleSpinBox, QSpinBox,
     QLabel, QFileDialog, QGroupBox, QRadioButton, QSlider,
     QGraphicsScene, QMessageBox, QSplitter, QStatusBar, QFrame,
-    QGraphicsPixmapItem, QGraphicsRectItem
+    QGraphicsPixmapItem, QGraphicsRectItem, QDialog, QTextEdit,
+    QDialogButtonBox
 )
 from PySide6.QtPdf import QPdfDocument
 
 # Import our custom canvas items
 from canvas import DraggablePageItem, InteractiveGraphicsView
 
-# Six-language translations dictionary (Shift individual resize removed)
+# Six-language translations dictionary
 TRANSLATIONS = {
     "zh": {
         "menu_settings": "设置",
         "menu_language": "语言",
+        "menu_theme": "主题",
         "file_group_title": "导入文件",
         "import_btn": "导入图片 / PDF",
         "no_file": "未加载文件。\n(支持 png, jpg, pdf)",
@@ -39,6 +41,9 @@ TRANSLATIONS = {
         "lbl_margin_bottom": "下边距 (mm):",
         "lbl_margin_left": "左边距 (mm):",
         "lbl_margin_right": "右边距 (mm):",
+        "lbl_overlap": "重叠边距 (mm):",
+        "custom_w_label": "自定义宽 (mm):",
+        "custom_h_label": "自定义高 (mm):",
         "layout_group_title": "排版与缩放方式",
         "radio_mode_a": "模式 A: 按比例缩放单页",
         "radio_mode_b": "模式 B: 多页分割拼接 (默认)",
@@ -49,6 +54,7 @@ TRANSLATIONS = {
         "lock_y": "锁定 Y 轴对齐",
         "lbl_page_scale": "纸张尺寸比例: {val}%",
         "autofit_btn": "自动缩放铺满图像",
+        "optimize_btn": "智能避让文字接缝",
         "action_group_title": "操作",
         "btn_reset": "重置纸张网格布局",
         "btn_export": "导出 PDF",
@@ -63,6 +69,7 @@ TRANSLATIONS = {
         "status_exporting": "正在导出至 {name}...",
         "status_exported": "成功导出 PDF 至 {name}",
         "status_export_failed": "导出 PDF 失败。",
+        "status_optimized": "接缝自动避让文字优化已完成。",
         "msg_export_success": "成功生成了 {pages} 页 of PDF 文件：\n{path}",
         "msg_error_title": "错误",
         "msg_success_title": "导出成功",
@@ -75,6 +82,7 @@ TRANSLATIONS = {
     "en": {
         "menu_settings": "Settings",
         "menu_language": "Language",
+        "menu_theme": "Theme",
         "file_group_title": "File Input",
         "import_btn": "Import Image / PDF",
         "no_file": "No file loaded.\n(Supports png, jpg, pdf)",
@@ -92,6 +100,9 @@ TRANSLATIONS = {
         "lbl_margin_bottom": "Bottom Margin (mm):",
         "lbl_margin_left": "Left Margin (mm):",
         "lbl_margin_right": "Right Margin (mm):",
+        "lbl_overlap": "Overlap Margin (mm):",
+        "custom_w_label": "Custom Width (mm):",
+        "custom_h_label": "Custom Height (mm):",
         "layout_group_title": "Layout & Scaling",
         "radio_mode_a": "Mode A: Scale to % (Single Page)",
         "radio_mode_b": "Mode B: Fit to X x Y Pages (Tiling)",
@@ -102,6 +113,7 @@ TRANSLATIONS = {
         "lock_y": "Lock Y Alignment",
         "lbl_page_scale": "Paper Size Scale: {val}%",
         "autofit_btn": "Auto-fit Scale to Cover Image",
+        "optimize_btn": "Optimize Seams (Avoid Text Cut)",
         "action_group_title": "Actions",
         "btn_reset": "Reset Paper Grid Layout",
         "btn_export": "Generate PDF",
@@ -116,6 +128,7 @@ TRANSLATIONS = {
         "status_exporting": "Exporting to {name}...",
         "status_exported": "Exported successfully to {name}",
         "status_export_failed": "Export failed.",
+        "status_optimized": "Seams optimized to avoid text cutting.",
         "msg_export_success": "Successfully generated PDF file with {pages} pages:\n{path}",
         "msg_error_title": "Error",
         "msg_success_title": "Export Successful",
@@ -128,6 +141,7 @@ TRANSLATIONS = {
     "ja": {
         "menu_settings": "設定",
         "menu_language": "言語",
+        "menu_theme": "テーマ",
         "file_group_title": "ファイルのインポート",
         "import_btn": "画像 / PDFを読み込む",
         "no_file": "ファイルが読み込まれていません。\n(png, jpg, pdf 対応)",
@@ -145,16 +159,20 @@ TRANSLATIONS = {
         "lbl_margin_bottom": "下余白 (mm):",
         "lbl_margin_left": "左余白 (mm):",
         "lbl_margin_right": "右余白 (mm):",
+        "lbl_overlap": "重なり余白 (mm):",
+        "custom_w_label": "カスタム幅 (mm):",
+        "custom_h_label": "カスタム高 (mm):",
         "layout_group_title": "レイアウトと縮放",
         "radio_mode_a": "モード A: 倍率指定（単一ページ）",
         "radio_mode_b": "モード B: 複数ページ分割表示",
         "lbl_scale_factor": "倍率:",
         "lbl_cols": "列数 (X):",
         "lbl_rows": "行数 (Y):",
-        "lock_x": "X軸の配置をロック",
-        "lock_y": "Y軸の配置をロック",
+        "lock_x": "X軸 of 配置をロック",
+        "lock_y": "Y軸 of 配置をロック",
         "lbl_page_scale": "用紙サイズ比率: {val}%",
         "autofit_btn": "自動調整して画像全体を覆う",
+        "optimize_btn": "文字切れ目の自動回避",
         "action_group_title": "操作",
         "btn_reset": "グリッド配置をリセット",
         "btn_export": "PDFを出力",
@@ -169,6 +187,7 @@ TRANSLATIONS = {
         "status_exporting": "{name} にエクスポート中...",
         "status_exported": "{name} にエクスポートされました。",
         "status_export_failed": "エクスポート失敗。",
+        "status_optimized": "文字切れ目の自動回避を適用しました。",
         "msg_export_success": "{pages} ページのPDFファイルが正常に生成されました:\n{path}",
         "msg_error_title": "エラー",
         "msg_success_title": "エクスポート成功",
@@ -181,6 +200,7 @@ TRANSLATIONS = {
     "fr": {
         "menu_settings": "Paramètres",
         "menu_language": "Langue",
+        "menu_theme": "Thème",
         "file_group_title": "Fichier d'entrée",
         "import_btn": "Importer Image / PDF",
         "no_file": "Aucun fichier chargé.\n(Formats png, jpg, pdf)",
@@ -198,6 +218,9 @@ TRANSLATIONS = {
         "lbl_margin_bottom": "Marge Inférieure (mm):",
         "lbl_margin_left": "Marge Gauche (mm):",
         "lbl_margin_right": "Marge Droite (mm):",
+        "lbl_overlap": "Marge de superposition (mm):",
+        "custom_w_label": "Largeur Personnalisée (mm):",
+        "custom_h_label": "Hauteur Personnalisée (mm):",
         "layout_group_title": "Mise en page & Échelle",
         "radio_mode_a": "Mode A: Échelle en % (Page Unique)",
         "radio_mode_b": "Mode B: Ajuster sur X x Y Pages (Tuiles)",
@@ -208,6 +231,7 @@ TRANSLATIONS = {
         "lock_y": "Verrouiller Alignement Y",
         "lbl_page_scale": "Échelle du Papier: {val}%",
         "autofit_btn": "Ajustement Auto pour couvrir l'image",
+        "optimize_btn": "Optimiser les coutures",
         "action_group_title": "Actions",
         "btn_reset": "Réinitialiser la grille",
         "export_btn": "Générer PDF",
@@ -222,6 +246,7 @@ TRANSLATIONS = {
         "status_exporting": "Exportation vers {name}...",
         "status_exported": "Exporté avec succès vers {name}",
         "status_export_failed": "L'exportation a échoué.",
+        "status_optimized": "Coutures optimisées pour éviter de couper le texte.",
         "msg_export_success": "Fichier PDF généré avec succès ({pages} pages) :\n{path}",
         "msg_error_title": "Erreur",
         "msg_success_title": "Exportation Réussie",
@@ -234,6 +259,7 @@ TRANSLATIONS = {
     "ru": {
         "menu_settings": "Настройки",
         "menu_language": "Язык",
+        "menu_theme": "Тема",
         "file_group_title": "Импорт файла",
         "import_btn": "Импорт Изображения / PDF",
         "no_file": "Файл не загружен.\n(Поддерживаются png, jpg, pdf)",
@@ -251,6 +277,9 @@ TRANSLATIONS = {
         "lbl_margin_bottom": "Нижнее Поле (мм):",
         "lbl_margin_left": "Левое Поле (мм):",
         "lbl_margin_right": "Правое Поле (мм):",
+        "lbl_overlap": "Перекрытие (мм):",
+        "custom_w_label": "Ширина (мм):",
+        "custom_h_label": "Высота (мм):",
         "layout_group_title": "Макет и Масштаб",
         "radio_mode_a": "Режим А: Масштаб в % (Одна страница)",
         "radio_mode_b": "Режим B: Разбить на X x Y страниц",
@@ -261,6 +290,7 @@ TRANSLATIONS = {
         "lock_y": "Блокировать Выравнивание Y",
         "paper_scale": "Масштаб Бумаги: {val}%",
         "autofit_btn": "Автоподбор под размер изображения",
+        "optimize_btn": "Оптимизировать швы",
         "action_group_title": "Действия",
         "btn_reset": "Сбросить Сетку Страниц",
         "export_btn": "Создать PDF",
@@ -275,6 +305,7 @@ TRANSLATIONS = {
         "status_exporting": "Экспорт в {name}...",
         "status_exported": "Успешный экспорт в {name}",
         "status_export_failed": "Ошибка экспорта.",
+        "status_optimized": "Швы оптимизированы для избежания разрезания текста.",
         "msg_export_success": "Успешно создан PDF-файл из {pages} страниц:\n{path}",
         "msg_error_title": "Ошибка",
         "msg_success_title": "Экспорт Выполнен",
@@ -287,6 +318,7 @@ TRANSLATIONS = {
     "ar": {
         "menu_settings": "الإعدادات",
         "menu_language": "اللغة",
+        "menu_theme": "السمة",
         "file_group_title": "إدخال الملف",
         "import_btn": "استيراد صورة / PDF",
         "no_file": "لم يتم تحميل ملف.\n(يدعم png, jpg, pdf)",
@@ -304,6 +336,9 @@ TRANSLATIONS = {
         "lbl_margin_bottom": "الهامش السفلي (مم):",
         "lbl_margin_left": "الهامش الأيسر (مم):",
         "lbl_margin_right": "الهامش الأيمن (مم):",
+        "lbl_overlap": "هامش التداخل (مم):",
+        "custom_w_label": "عرض مخصص (مم):",
+        "custom_h_label": "ارتفاع مخصص (مم):",
         "layout_group_title": "التنسيق وتغيير الحجم",
         "radio_mode_a": "الوضع A: تغيير الحجم كنسبة مئوية",
         "radio_mode_b": "الوضع B: تقسيم على X x Y صفحات",
@@ -314,6 +349,7 @@ TRANSLATIONS = {
         "lock_y": "قفل محاذاة Y",
         "paper_scale": "نسبة حجم الورقة: {val}%",
         "autofit_btn": "ملاءمة تلقائية لتغطية الصورة",
+        "optimize_btn": "تحسين الفواصل (تجنب القطع)",
         "action_group_title": "الإجراءات",
         "btn_reset": "إعادة تعيين تخطيط الشبكة",
         "export_btn": "تصدير PDF",
@@ -328,6 +364,7 @@ TRANSLATIONS = {
         "status_exporting": "جاري التصدير إلى {name}...",
         "status_exported": "تم التصدير بنجاح إلى {name}",
         "status_export_failed": "فشل التصدير.",
+        "status_optimized": "تم تحسين الفواصل لتجنب قطع النص.",
         "msg_export_success": "تم إنشاء ملف PDF بنجاح بعدد صفحات {pages}:\n{path}",
         "msg_error_title": "خطأ",
         "msg_success_title": "تم التصدير بنجاح",
@@ -338,6 +375,227 @@ TRANSLATIONS = {
         "fit_width": "ملاءمة العرض",
     }
 }
+
+# Stylesheet presets (5 themes)
+THEMES = {
+    "dark": """
+        QMainWindow { background-color: #121212; }
+        QWidget { color: #e0e0e0; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
+        QGroupBox { border: 1px solid #2d2d2d; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #ffffff; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
+        QPushButton { background-color: #007aff; color: white; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QPushButton:hover { background-color: #0062cc; }
+        QPushButton:pressed { background-color: #004ea6; }
+        QPushButton#reset_btn { background-color: #2d2d2d; color: #e0e0e0; border: 1px solid #3c3c3c; }
+        QPushButton#reset_btn:hover { background-color: #3d3d3d; }
+        QPushButton#zoom_btn { background-color: #2d2d2d; color: #ffffff; border: 1px solid #3c3c3c; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn:hover { background-color: #3d3d3d; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #1e1e1e; border: 1px solid #3c3c3c; border-radius: 5px; padding: 5px; color: #ffffff; }
+        QComboBox::drop-down { border: none; }
+        QSlider::groove:horizontal { border: 1px solid #3c3c3c; height: 6px; background: #1e1e1e; border-radius: 3px; }
+        QSlider::handle:horizontal { background: #007aff; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
+        QSlider::handle:horizontal:hover { background: #0062cc; }
+        QStatusBar { background-color: #1a1a1a; color: #888888; }
+        
+        /* Menu and Dialog Custom Styling */
+        QMenuBar { background-color: #121212; color: #e0e0e0; border-bottom: 1px solid #2d2d2d; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item:selected { background-color: #2d2d2d; color: #ffffff; }
+        QMenu { background-color: #1e1e1e; color: #e0e0e0; border: 1px solid #2d2d2d; border-radius: 6px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #007aff; color: white; }
+        QDialog { background-color: #121212; }
+        QTextEdit { background-color: #1e1e1e; color: #ffffff; border: 1px solid #3c3c3c; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        
+        /* Scrollbar Styling */
+        QScrollBar:vertical { border: none; background: #121212; width: 10px; margin: 0px; }
+        QScrollBar::handle:vertical { background: #2d2d2d; min-height: 20px; border-radius: 5px; }
+        QScrollBar::handle:vertical:hover { background: #3d3d3d; }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { border: none; background: none; }
+        QScrollBar:horizontal { border: none; background: #121212; height: 10px; margin: 0px; }
+        QScrollBar::handle:horizontal { background: #2d2d2d; min-width: 20px; border-radius: 5px; }
+        QScrollBar::handle:horizontal:hover { background: #3d3d3d; }
+        QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { border: none; background: none; }
+    """,
+    "light": """
+        QMainWindow { background-color: #f5f5f7; }
+        QWidget { color: #1d1d1f; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
+        QGroupBox { border: 1px solid #d2d2d7; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #1d1d1f; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
+        QPushButton { background-color: #007aff; color: white; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QPushButton:hover { background-color: #0062cc; }
+        QPushButton:pressed { background-color: #004ea6; }
+        QPushButton#reset_btn { background-color: #e8e8ed; color: #1d1d1f; border: 1px solid #d2d2d7; }
+        QPushButton#reset_btn:hover { background-color: #d2d2d7; }
+        QPushButton#zoom_btn { background-color: #e8e8ed; color: #1d1d1f; border: 1px solid #d2d2d7; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn:hover { background-color: #d2d2d7; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #ffffff; border: 1px solid #d2d2d7; border-radius: 5px; padding: 5px; color: #1d1d1f; }
+        QComboBox::drop-down { border: none; }
+        QSlider::groove:horizontal { border: 1px solid #d2d2d7; height: 6px; background: #e8e8ed; border-radius: 3px; }
+        QSlider::handle:horizontal { background: #007aff; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
+        QSlider::handle:horizontal:hover { background: #0062cc; }
+        QStatusBar { background-color: #e8e8ed; color: #86868b; }
+        
+        /* Menu and Dialog Custom Styling */
+        QMenuBar { background-color: #f5f5f7; color: #1d1d1f; border-bottom: 1px solid #d2d2d7; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item:selected { background-color: #e8e8ed; color: #1d1d1f; }
+        QMenu { background-color: #ffffff; color: #1d1d1f; border: 1px solid #d2d2d7; border-radius: 6px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #007aff; color: white; }
+        QDialog { background-color: #f5f5f7; }
+        QTextEdit { background-color: #ffffff; color: #1d1d1f; border: 1px solid #d2d2d7; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        
+        /* Scrollbar Styling */
+        QScrollBar:vertical { border: none; background: #f5f5f7; width: 10px; margin: 0px; }
+        QScrollBar::handle:vertical { background: #d2d2d7; min-height: 20px; border-radius: 5px; }
+        QScrollBar::handle:vertical:hover { background: #b8b8bf; }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { border: none; background: none; }
+        QScrollBar:horizontal { border: none; background: #f5f5f7; height: 10px; margin: 0px; }
+        QScrollBar::handle:horizontal { background: #d2d2d7; min-width: 20px; border-radius: 5px; }
+        QScrollBar::handle:horizontal:hover { background: #b8b8bf; }
+        QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { border: none; background: none; }
+    """,
+    "nordic": """
+        QMainWindow { background-color: #0f172a; }
+        QWidget { color: #f1f5f9; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
+        QGroupBox { border: 1px solid #334155; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #f8fafc; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
+        QPushButton { background-color: #38bdf8; color: #0f172a; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QPushButton:hover { background-color: #0ea5e9; }
+        QPushButton:pressed { background-color: #0284c7; }
+        QPushButton#reset_btn { background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155; }
+        QPushButton#reset_btn:hover { background-color: #334155; }
+        QPushButton#zoom_btn { background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn:hover { background-color: #334155; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #1e293b; border: 1px solid #334155; border-radius: 5px; padding: 5px; color: #f1f5f9; }
+        QComboBox::drop-down { border: none; }
+        QSlider::groove:horizontal { border: 1px solid #334155; height: 6px; background: #1e293b; border-radius: 3px; }
+        QSlider::handle:horizontal { background: #38bdf8; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
+        QSlider::handle:horizontal:hover { background: #0ea5e9; }
+        QStatusBar { background-color: #1e293b; color: #94a3b8; }
+        
+        /* Menu and Dialog Custom Styling */
+        QMenuBar { background-color: #0f172a; color: #f1f5f9; border-bottom: 1px solid #334155; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item:selected { background-color: #1e293b; color: #f8fafc; }
+        QMenu { background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155; border-radius: 6px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #38bdf8; color: #0f172a; }
+        QDialog { background-color: #0f172a; }
+        QTextEdit { background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        
+        /* Scrollbar Styling */
+        QScrollBar:vertical { border: none; background: #0f172a; width: 10px; margin: 0px; }
+        QScrollBar::handle:vertical { background: #1e293b; min-height: 20px; border-radius: 5px; }
+        QScrollBar::handle:vertical:hover { background: #334155; }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { border: none; background: none; }
+        QScrollBar:horizontal { border: none; background: #0f172a; height: 10px; margin: 0px; }
+        QScrollBar::handle:horizontal { background: #1e293b; min-width: 20px; border-radius: 5px; }
+        QScrollBar::handle:horizontal:hover { background: #334155; }
+        QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { border: none; background: none; }
+    """,
+    "forest": """
+        QMainWindow { background-color: #141b1a; }
+        QWidget { color: #e6f4f1; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
+        QGroupBox { border: 1px solid #2d3d3a; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #ffffff; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
+        QPushButton { background-color: #059669; color: white; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QPushButton:hover { background-color: #047857; }
+        QPushButton:pressed { background-color: #065f46; }
+        QPushButton#reset_btn { background-color: #1c2826; color: #e6f4f1; border: 1px solid #2d3d3a; }
+        QPushButton#reset_btn:hover { background-color: #2d3d3a; }
+        QPushButton#zoom_btn { background-color: #1c2826; color: #e6f4f1; border: 1px solid #2d3d3a; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn:hover { background-color: #2d3d3a; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #1c2826; border: 1px solid #2d3d3a; border-radius: 5px; padding: 5px; color: #ffffff; }
+        QComboBox::drop-down { border: none; }
+        QSlider::groove:horizontal { border: 1px solid #2d3d3a; height: 6px; background: #1c2826; border-radius: 3px; }
+        QSlider::handle:horizontal { background: #059669; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
+        QSlider::handle:horizontal:hover { background: #047857; }
+        QStatusBar { background-color: #1c2826; color: #809c96; }
+        
+        /* Menu and Dialog Custom Styling */
+        QMenuBar { background-color: #141b1a; color: #e6f4f1; border-bottom: 1px solid #2d3d3a; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item:selected { background-color: #1c2826; color: #ffffff; }
+        QMenu { background-color: #1c2826; color: #e6f4f1; border: 1px solid #2d3d3a; border-radius: 6px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #059669; color: white; }
+        QDialog { background-color: #141b1a; }
+        QTextEdit { background-color: #1c2826; color: #ffffff; border: 1px solid #2d3d3a; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        
+        /* Scrollbar Styling */
+        QScrollBar:vertical { border: none; background: #141b1a; width: 10px; margin: 0px; }
+        QScrollBar::handle:vertical { background: #1c2826; min-height: 20px; border-radius: 5px; }
+        QScrollBar::handle:vertical:hover { background: #2d3d3a; }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { border: none; background: none; }
+        QScrollBar:horizontal { border: none; background: #141b1a; height: 10px; margin: 0px; }
+        QScrollBar::handle:horizontal { background: #1c2826; min-width: 20px; border-radius: 5px; }
+        QScrollBar::handle:horizontal:hover { background: #2d3d3a; }
+        QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { border: none; background: none; }
+    """,
+    "matrix": """
+        QMainWindow { background-color: #000000; }
+        QWidget { color: #ffb000; font-family: 'Courier New', 'Consolas', monospace; font-size: 13px; }
+        QGroupBox { border: 1px solid #ffb000; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #ffb000; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
+        QPushButton { background-color: #ffb000; color: #000000; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QPushButton:hover { background-color: #e09b00; }
+        QPushButton:pressed { background-color: #c28600; }
+        QPushButton#reset_btn { background-color: #000000; color: #ffb000; border: 1px solid #ffb000; }
+        QPushButton#reset_btn:hover { background-color: #1a1a1a; }
+        QPushButton#zoom_btn { background-color: #000000; color: #ffb000; border: 1px solid #ffb000; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn:hover { background-color: #1a1a1a; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #000000; border: 1px solid #ffb000; border-radius: 5px; padding: 5px; color: #ffb000; }
+        QComboBox::drop-down { border: none; }
+        QSlider::groove:horizontal { border: 1px solid #ffb000; height: 6px; background: #000000; border-radius: 3px; }
+        QSlider::handle:horizontal { background: #ffb000; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
+        QSlider::handle:horizontal:hover { background: #e09b00; }
+        QStatusBar { background-color: #000000; color: #cc8d00; border-top: 1px solid #ffb000; }
+        
+        /* Menu and Dialog Custom Styling */
+        QMenuBar { background-color: #000000; color: #ffb000; border-bottom: 1px solid #ffb000; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item:selected { background-color: #1a1a1a; color: #ffb000; }
+        QMenu { background-color: #000000; color: #ffb000; border: 1px solid #ffb000; border-radius: 6px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #ffb000; color: #000000; }
+        QDialog { background-color: #000000; }
+        QTextEdit { background-color: #000000; color: #ffb000; border: 1px solid #ffb000; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        
+        /* Scrollbar Styling */
+        QScrollBar:vertical { border: none; background: #000000; width: 10px; margin: 0px; }
+        QScrollBar::handle:vertical { background: #1a1a1a; min-height: 20px; border-radius: 5px; border: 1px solid #ffb000; }
+        QScrollBar::handle:vertical:hover { background: #2a2a2a; }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { border: none; background: none; }
+        QScrollBar:horizontal { border: none; background: #000000; height: 10px; margin: 0px; }
+        QScrollBar::handle:horizontal { background: #1a1a1a; min-width: 20px; border-radius: 5px; border: 1px solid #ffb000; }
+        QScrollBar::handle:horizontal:hover { background: #2a2a2a; }
+        QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { border: none; background: none; }
+    """
+}
+
+class CssEditorDialog(QDialog):
+    """
+    QDialog containing a QTextEdit to let user write/modify QSS directly.
+    """
+    def __init__(self, current_css, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Custom CSS Editor (自定义 CSS 样式)")
+        self.resize(600, 400)
+        
+        layout = QVBoxLayout(self)
+        self.text_edit = QTextEdit(self)
+        self.text_edit.setPlainText(current_css)
+        layout.addWidget(self.text_edit)
+        
+        buttons = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel, self)
+        buttons.accepted.connect(self.accept)
+        buttons.rejected.connect(self.reject)
+        layout.addWidget(buttons)
+        
+    def get_css(self):
+        return self.text_edit.toPlainText()
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -359,8 +617,9 @@ class MainWindow(QMainWindow):
         # Performance optimization: Cached QPixmap
         self.q_pixmap = None
         
-        # Default Language
+        # Default States
         self.current_lang = "zh"
+        self.current_theme = "dark"
         
         # Graphics view elements
         self.scene = QGraphicsScene(self)
@@ -374,7 +633,7 @@ class MainWindow(QMainWindow):
         
         # Build UI
         self.setup_ui()
-        self.apply_stylesheet()
+        self.set_theme("dark")
         
         # Connect signals
         self.connect_signals()
@@ -386,7 +645,7 @@ class MainWindow(QMainWindow):
         self.update_controls_visibility()
         
     def setup_ui(self):
-        # Create Menu Bar for Settings -> Language
+        # Create Menu Bar for Settings -> Language / Theme
         menubar = self.menuBar()
         self.menu_settings = menubar.addMenu("Settings")
         self.menu_language = self.menu_settings.addMenu("Language")
@@ -397,6 +656,14 @@ class MainWindow(QMainWindow):
         self.action_lang_fr = self.menu_language.addAction("Français")
         self.action_lang_ru = self.menu_language.addAction("Русский")
         self.action_lang_ar = self.menu_language.addAction("العربية")
+        
+        self.menu_theme = self.menu_settings.addMenu("Theme")
+        self.action_theme_dark = self.menu_theme.addAction("Modern Dark (现代暗黑)")
+        self.action_theme_light = self.menu_theme.addAction("Classic Light (经典明亮)")
+        self.action_theme_nordic = self.menu_theme.addAction("Nordic Blue (北欧极地蓝)")
+        self.action_theme_forest = self.menu_theme.addAction("Forest Green (森林绿意)")
+        self.action_theme_matrix = self.menu_theme.addAction("Matrix Amber (黑客帝国)")
+        self.action_theme_custom = self.menu_theme.addAction("Custom CSS (自定义CSS...)")
         
         # Central widget and layout
         central_widget = QWidget(self)
@@ -448,10 +715,32 @@ class MainWindow(QMainWindow):
         paper_size_layout.setContentsMargins(0, 0, 0, 0)
         self.lbl_paper = QLabel("Paper Size:", paper_size_widget)
         self.combo_paper_size = QComboBox(paper_size_widget)
-        self.combo_paper_size.addItems(["A4 (210 x 297 mm)", "A3 (297 x 420 mm)"])
+        # We populate dynamically in retranslate_ui, adding "Custom"
         paper_size_layout.addWidget(self.lbl_paper)
         paper_size_layout.addWidget(self.combo_paper_size)
         paper_layout.addWidget(paper_size_widget)
+        
+        # Custom Paper Formats widget (Hidden by default)
+        self.custom_paper_widget = QWidget(self.paper_group)
+        custom_paper_layout = QHBoxLayout(self.custom_paper_widget)
+        custom_paper_layout.setContentsMargins(0, 0, 0, 0)
+        
+        self.lbl_custom_w = QLabel("W (mm):", self.custom_paper_widget)
+        self.spin_custom_w = QDoubleSpinBox(self.custom_paper_widget)
+        self.spin_custom_w.setRange(100.0, 2000.0)
+        self.spin_custom_w.setValue(210.0) # default A4
+        
+        self.lbl_custom_h = QLabel("H (mm):", self.custom_paper_widget)
+        self.spin_custom_h = QDoubleSpinBox(self.custom_paper_widget)
+        self.spin_custom_h.setRange(100.0, 2000.0)
+        self.spin_custom_h.setValue(297.0)
+        
+        custom_paper_layout.addWidget(self.lbl_custom_w)
+        custom_paper_layout.addWidget(self.spin_custom_w)
+        custom_paper_layout.addWidget(self.lbl_custom_h)
+        custom_paper_layout.addWidget(self.spin_custom_h)
+        self.custom_paper_widget.setVisible(False)
+        paper_layout.addWidget(self.custom_paper_widget)
         
         # Orientation
         orientation_widget = QWidget(self.paper_group)
@@ -459,7 +748,6 @@ class MainWindow(QMainWindow):
         orientation_layout.setContentsMargins(0, 0, 0, 0)
         self.lbl_orient = QLabel("Orientation:", orientation_widget)
         self.combo_orientation = QComboBox(orientation_widget)
-        self.combo_orientation.addItems(["Portrait", "Landscape"])
         orientation_layout.addWidget(self.lbl_orient)
         orientation_layout.addWidget(self.combo_orientation)
         paper_layout.addWidget(orientation_widget)
@@ -518,8 +806,20 @@ class MainWindow(QMainWindow):
         self.spin_margin_right.setValue(10.0)
         lr_layout.addWidget(self.spin_margin_right)
         margins_grid.addWidget(lr_widget)
-        
         paper_layout.addWidget(margins_group)
+        
+        # Overlap Margin (mm)
+        overlap_widget = QWidget(self.paper_group)
+        overlap_layout = QHBoxLayout(overlap_widget)
+        overlap_layout.setContentsMargins(0, 0, 0, 0)
+        self.lbl_overlap = QLabel("Overlap Margin (mm):", overlap_widget)
+        self.spin_overlap = QDoubleSpinBox(overlap_widget)
+        self.spin_overlap.setRange(0.0, 50.0)
+        self.spin_overlap.setValue(0.0)
+        overlap_layout.addWidget(self.lbl_overlap)
+        overlap_layout.addWidget(self.spin_overlap)
+        paper_layout.addWidget(overlap_widget)
+        
         sidebar_layout.addWidget(self.paper_group)
         
         # --- 3. Scaling & Layout Mode Group ---
@@ -594,6 +894,11 @@ class MainWindow(QMainWindow):
         self.btn_autofit = QPushButton("Auto-fit Scale to Cover Image", slider_widget)
         self.btn_autofit.setStyleSheet("background-color: #2d2d2d; color: #007aff; border: 1px solid #007aff;")
         slider_layout.addWidget(self.btn_autofit)
+        
+        # Optimize Seams (Avoid Text Cut) button
+        self.btn_optimize_seams = QPushButton("Optimize Seams", slider_widget)
+        self.btn_optimize_seams.setStyleSheet("background-color: #2d2d2d; color: #38bdf8; border: 1px solid #38bdf8;")
+        slider_layout.addWidget(self.btn_optimize_seams)
         
         mode_b_layout.addWidget(slider_widget)
         layout_layout.addWidget(self.panel_mode_b)
@@ -673,97 +978,16 @@ class MainWindow(QMainWindow):
         self.status_bar = QStatusBar(self)
         self.setStatusBar(self.status_bar)
 
-    def apply_stylesheet(self):
-        qss = """
-        QMainWindow {
-            background-color: #121212;
-        }
-        QWidget {
-            color: #e0e0e0;
-            font-family: 'Segoe UI', 'Outfit', sans-serif;
-            font-size: 13px;
-        }
-        QGroupBox {
-            border: 1px solid #2d2d2d;
-            border-radius: 8px;
-            margin-top: 15px;
-            padding-top: 15px;
-            font-weight: bold;
-            color: #ffffff;
-        }
-        QGroupBox::title {
-            subcontrol-origin: margin;
-            subcontrol-position: top left;
-            left: 10px;
-            padding: 0 5px;
-        }
-        QPushButton {
-            background-color: #007aff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 8px 15px;
-            font-weight: bold;
-        }
-        QPushButton:hover {
-            background-color: #0062cc;
-        }
-        QPushButton:pressed {
-            background-color: #004ea6;
-        }
-        QPushButton#reset_btn {
-            background-color: #2d2d2d;
-            color: #e0e0e0;
-            border: 1px solid #3c3c3c;
-        }
-        QPushButton#reset_btn:hover {
-            background-color: #3d3d3d;
-        }
-        QPushButton#zoom_btn {
-            background-color: #2d2d2d;
-            color: #ffffff;
-            border: 1px solid #3c3c3c;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        QPushButton#zoom_btn:hover {
-            background-color: #3d3d3d;
-        }
-        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit {
-            background-color: #1e1e1e;
-            border: 1px solid #3c3c3c;
-            border-radius: 5px;
-            padding: 5px;
-            color: #ffffff;
-        }
-        QComboBox::drop-down {
-            border: none;
-            subcontrol-origin: padding;
-            subcontrol-position: top right;
-            width: 15px;
-        }
-        QSlider::groove:horizontal {
-            border: 1px solid #3c3c3c;
-            height: 6px;
-            background: #1e1e1e;
-            border-radius: 3px;
-        }
-        QSlider::handle:horizontal {
-            background: #007aff;
-            width: 14px;
-            margin-top: -4px;
-            margin-bottom: -4px;
-            border-radius: 7px;
-        }
-        QSlider::handle:horizontal:hover {
-            background: #0062cc;
-        }
-        QStatusBar {
-            background-color: #1a1a1a;
-            color: #888888;
-        }
-        """
-        self.setStyleSheet(qss)
+    def set_theme(self, theme_name):
+        self.current_theme = theme_name
+        if theme_name in THEMES:
+            QApplication.instance().setStyleSheet(THEMES[theme_name])
+        elif theme_name == "custom":
+            current_qss = QApplication.instance().styleSheet() or ""
+            dialog = CssEditorDialog(current_qss, self)
+            if dialog.exec() == QDialog.DialogCode.Accepted:
+                custom_qss = dialog.get_css()
+                QApplication.instance().setStyleSheet(custom_qss)
 
     def connect_signals(self):
         # File operations
@@ -771,7 +995,7 @@ class MainWindow(QMainWindow):
         self.combo_pdf_page.currentIndexChanged.connect(self.on_pdf_page_changed)
         
         # Preview updates triggered by setting changes
-        self.combo_paper_size.currentIndexChanged.connect(self.update_preview)
+        self.combo_paper_size.currentIndexChanged.connect(self.on_paper_size_combo_changed)
         self.combo_orientation.currentIndexChanged.connect(self.update_preview)
         self.chk_center_h.toggled.connect(self.update_preview)
         self.chk_center_v.toggled.connect(self.update_preview)
@@ -780,6 +1004,10 @@ class MainWindow(QMainWindow):
         self.spin_margin_bottom.valueChanged.connect(self.update_preview)
         self.spin_margin_left.valueChanged.connect(self.update_preview)
         self.spin_margin_right.valueChanged.connect(self.update_preview)
+        self.spin_overlap.valueChanged.connect(self.update_preview)
+        
+        self.spin_custom_w.valueChanged.connect(self.update_preview)
+        self.spin_custom_h.valueChanged.connect(self.update_preview)
         
         # Modes toggle
         self.radio_mode_a.toggled.connect(self.on_mode_toggled)
@@ -796,10 +1024,27 @@ class MainWindow(QMainWindow):
         
         self.slider_page_scale.valueChanged.connect(self.on_page_scale_slider_changed)
         self.btn_autofit.clicked.connect(self.on_autofit_clicked)
+        self.btn_optimize_seams.clicked.connect(self.on_optimize_seams_clicked)
         
         # Action buttons
         self.btn_reset.clicked.connect(self.reset_layout)
         self.btn_export.clicked.connect(self.export_to_pdf)
+        
+        # Theme trigger connections
+        self.action_theme_dark.triggered.connect(lambda: self.set_theme("dark"))
+        self.action_theme_light.triggered.connect(lambda: self.set_theme("light"))
+        self.action_theme_nordic.triggered.connect(lambda: self.set_theme("nordic"))
+        self.action_theme_forest.triggered.connect(lambda: self.set_theme("forest"))
+        self.action_theme_matrix.triggered.connect(lambda: self.set_theme("matrix"))
+        self.action_theme_custom.triggered.connect(lambda: self.set_theme("custom"))
+        
+        # Language trigger connections
+        self.action_lang_zh.triggered.connect(lambda: self.change_language("zh"))
+        self.action_lang_en.triggered.connect(lambda: self.change_language("en"))
+        self.action_lang_ja.triggered.connect(lambda: self.change_language("ja"))
+        self.action_lang_fr.triggered.connect(lambda: self.change_language("fr"))
+        self.action_lang_ru.triggered.connect(lambda: self.change_language("ru"))
+        self.action_lang_ar.triggered.connect(lambda: self.change_language("ar"))
         
         # View zoom controls
         self.btn_zoom_in.clicked.connect(lambda: self.view.scale(1.2, 1.2))
@@ -809,6 +1054,11 @@ class MainWindow(QMainWindow):
         
         # Wire graphics view zoom change to label
         self.view.zoom_changed_callback = self.update_zoom_label
+
+    def on_paper_size_combo_changed(self):
+        is_custom = self.combo_paper_size.currentIndex() == 2
+        self.custom_paper_widget.setVisible(is_custom)
+        self.update_preview()
 
     def change_language(self, lang_code):
         self.current_lang = lang_code
@@ -823,6 +1073,7 @@ class MainWindow(QMainWindow):
         # Menu Bar
         self.menu_settings.setTitle(t["menu_settings"])
         self.menu_language.setTitle(t["menu_language"])
+        self.menu_theme.setTitle(t["menu_theme"])
         
         # Sidebar Groups
         self.file_group.setTitle(t["file_group_title"])
@@ -831,6 +1082,35 @@ class MainWindow(QMainWindow):
         
         self.paper_group.setTitle(t["paper_group_title"])
         self.lbl_paper.setText(t["lbl_paper"])
+        
+        # Re-populate Paper Size Combo
+        self.combo_paper_size.blockSignals(True)
+        curr_paper = self.combo_paper_size.currentIndex()
+        self.combo_paper_size.clear()
+        
+        # Translate the options (Custom added)
+        paper_options = ["A4 (210 x 297 mm)", "A3 (297 x 420 mm)"]
+        if lang == "zh":
+            paper_options.append("自定义纸张 (Custom)...")
+        elif lang == "ja":
+            paper_options.append("カスタム用紙...")
+        elif lang == "fr":
+            paper_options.append("Papier Personnalisé...")
+        elif lang == "ru":
+            paper_options.append("Пользовательский...")
+        elif lang == "ar":
+            paper_options.append("ورقة مخصصة...")
+        else:
+            paper_options.append("Custom Paper...")
+            
+        self.combo_paper_size.addItems(paper_options)
+        self.combo_paper_size.setCurrentIndex(curr_paper if curr_paper >= 0 else 0)
+        self.combo_paper_size.blockSignals(False)
+        
+        # Custom Paper labels
+        self.lbl_custom_w.setText(t["custom_w_label"])
+        self.lbl_custom_h.setText(t["custom_h_label"])
+        
         self.lbl_orient.setText(t["lbl_orient"])
         
         # Re-populate Orientation Combo
@@ -847,6 +1127,7 @@ class MainWindow(QMainWindow):
         self.lbl_margin_bottom.setText(t["lbl_margin_bottom"])
         self.lbl_margin_left.setText(t["lbl_margin_left"])
         self.lbl_margin_right.setText(t["lbl_margin_right"])
+        self.lbl_overlap.setText(t["lbl_overlap"])
         
         self.layout_group.setTitle(t["layout_group_title"])
         self.radio_mode_a.setText(t["radio_mode_a"])
@@ -862,6 +1143,7 @@ class MainWindow(QMainWindow):
         val_scale = self.slider_page_scale.value()
         self.lbl_page_scale.setText(t["lbl_page_scale"].format(val=val_scale))
         self.btn_autofit.setText(t["autofit_btn"])
+        self.btn_optimize_seams.setText(t["optimize_btn"])
         
         self.action_group.setTitle(t["action_group_title"])
         self.btn_reset.setText(t["btn_reset"])
@@ -977,7 +1259,7 @@ class MainWindow(QMainWindow):
                 self.q_pixmap = QPixmap()
                 self.q_pixmap.loadFromData(buffer.getvalue())
             
-            # Default scale to 100% (No auto-fit on load)
+            # Default scale to 100%
             self.slider_page_scale.setValue(100)
             
             self.retranslate_ui()
@@ -1009,7 +1291,7 @@ class MainWindow(QMainWindow):
         if qimg.isNull():
             raise Exception("QPdfDocument render returned null image")
             
-        # Performance optimization: Cache QPixmap directly from QImage (extremely fast)
+        # Performance optimization: Cache QPixmap directly from QImage
         self.q_pixmap = QPixmap.fromImage(qimg)
         
         # Keep PIL image for crops
@@ -1024,7 +1306,6 @@ class MainWindow(QMainWindow):
         try:
             QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
             self.render_pdf_page()
-            # Keep scale at its current value (don't run autofit)
             self.retranslate_ui()
             self.update_preview()
             self.zoom_fit_all()
@@ -1035,7 +1316,11 @@ class MainWindow(QMainWindow):
             QApplication.restoreOverrideCursor()
 
     def get_paper_size_mm(self):
-        is_a3 = self.combo_paper_size.currentIndex() == 1
+        paper_idx = self.combo_paper_size.currentIndex()
+        if paper_idx == 2: # Custom size
+            return self.spin_custom_w.value(), self.spin_custom_h.value()
+            
+        is_a3 = paper_idx == 1
         is_landscape = self.combo_orientation.currentIndex() == 1
         
         w, h = (297, 420) if is_a3 else (210, 297)
@@ -1060,6 +1345,80 @@ class MainWindow(QMainWindow):
         self.lbl_page_scale.setText(t["lbl_page_scale"].format(val=val))
         self.update_preview()
 
+    def on_optimize_seams_clicked(self):
+        if self.pil_image is None or self.radio_mode_a.isChecked():
+            return
+            
+        import numpy as np
+        
+        cols = self.spin_cols.value()
+        rows = self.spin_rows.value()
+        
+        if rows <= 1:
+            return # No horizontal seams to optimize
+            
+        QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
+        
+        try:
+            # 1. Convert PIL image to grayscale numpy array
+            img_gray = np.array(self.pil_image.convert("L"))
+            # Calculate horizontal differences (energy)
+            diff = np.abs(np.diff(img_gray, axis=1))
+            row_energy = np.sum(diff, axis=1)
+            
+            # Smooth row energy with a simple 5-pixel moving average to reduce noise
+            window_size = 5
+            smoothed_energy = np.convolve(row_energy, np.ones(window_size)/window_size, mode='same')
+            
+            # Get current layout parameters
+            paper_w_mm, paper_h_mm = self.get_paper_size_mm()
+            m_left, m_right, m_top, m_bottom = self.get_margins_mm()
+            printable_w_mm = max(1.0, paper_w_mm - m_left - m_right)
+            printable_h_mm = max(1.0, paper_h_mm - m_top - m_bottom)
+            printable_ratio = printable_h_mm / printable_w_mm
+            
+            page_scale_factor = self.slider_page_scale.value() / 100.0
+            w_rect = (self.image_width / cols) * page_scale_factor
+            h_rect = w_rect * printable_ratio
+            
+            overlap_mm = self.spin_overlap.value()
+            overlap_px = overlap_mm * (w_rect / printable_w_mm)
+            
+            # Run sequential split optimization
+            positions = [0.0] * rows
+            positions[0] = 0.0
+            
+            for r in range(1, rows):
+                default_split = positions[r-1] + h_rect - overlap_px
+                # Search window: +/- 15% of h_rect
+                search_limit = int(h_rect * 0.15)
+                search_start = max(0, int(default_split - search_limit))
+                search_end = min(self.image_height - 1, int(default_split + search_limit))
+                
+                if search_end > search_start:
+                    window_energy = smoothed_energy[search_start:search_end]
+                    min_idx = np.argmin(window_energy)
+                    optimal_split = search_start + min_idx
+                    positions[r] = optimal_split
+                else:
+                    positions[r] = default_split
+            
+            # Update the page items in the scene
+            for item in self.page_items:
+                r = item.row_idx
+                new_y = positions[r]
+                item.setPos(item.pos().x(), new_y)
+                item.fixed_y = new_y
+                
+            self.scene.update()
+            t = TRANSLATIONS[self.current_lang]
+            self.status_bar.showMessage(t["status_optimized"], 3000)
+            
+        except Exception as e:
+            QMessageBox.critical(self, "Optimization Error", str(e))
+        finally:
+            QApplication.restoreOverrideCursor()
+
     def on_autofit_clicked(self):
         if self.pil_image is None:
             return
@@ -1067,8 +1426,8 @@ class MainWindow(QMainWindow):
         paper_w_mm, paper_h_mm = self.get_paper_size_mm()
         m_left, m_right, m_top, m_bottom = self.get_margins_mm()
         
-        printable_w_mm = paper_w_mm - m_left - m_right
-        printable_h_mm = paper_h_mm - m_top - m_bottom
+        printable_w_mm = max(1.0, paper_w_mm - m_left - m_right)
+        printable_h_mm = max(1.0, paper_h_mm - m_top - m_bottom)
         printable_ratio = printable_h_mm / printable_w_mm
         
         cols = self.spin_cols.value()
@@ -1125,8 +1484,8 @@ class MainWindow(QMainWindow):
         p_top = m_top * scale_mm_to_px
         p_bottom = m_bottom * scale_mm_to_px
         
-        printable_w = paper_w - p_left - p_right
-        printable_h = paper_h - p_top - p_bottom
+        printable_w = max(1.0, paper_w - p_left - p_right)
+        printable_h = max(1.0, paper_h - p_top - p_bottom)
         
         self.mock_paper_item = QGraphicsRectItem(0, 0, paper_w, paper_h)
         self.mock_paper_item.setBrush(QBrush(QColor(255, 255, 255)))
@@ -1168,8 +1527,8 @@ class MainWindow(QMainWindow):
         paper_w_mm, paper_h_mm = self.get_paper_size_mm()
         m_left, m_right, m_top, m_bottom = self.get_margins_mm()
         
-        printable_w_mm = paper_w_mm - m_left - m_right
-        printable_h_mm = paper_h_mm - m_top - m_bottom
+        printable_w_mm = max(1.0, paper_w_mm - m_left - m_right)
+        printable_h_mm = max(1.0, paper_h_mm - m_top - m_bottom)
         printable_ratio = printable_h_mm / printable_w_mm
         
         cols = self.spin_cols.value()
@@ -1179,13 +1538,18 @@ class MainWindow(QMainWindow):
         w_rect = (self.image_width / cols) * page_scale_factor
         h_rect = w_rect * printable_ratio
         
+        # Overlap margin calculation in pixels
+        overlap_mm = self.spin_overlap.value()
+        overlap_px = overlap_mm * (w_rect / printable_w_mm)
+        
         boundary_rect = QRectF(0, 0, self.image_width, self.image_height)
         
         for r in range(rows):
             for c in range(cols):
                 page_num = c + r * cols + 1
-                default_x = c * w_rect
-                default_y = r * h_rect
+                # Default positions overlap by overlap_px
+                default_x = c * (w_rect - overlap_px)
+                default_y = r * (h_rect - overlap_px)
                 
                 rect = QRectF(0, 0, w_rect, h_rect)
                 item = DraggablePageItem(rect, r, c, page_num)
@@ -1212,17 +1576,21 @@ class MainWindow(QMainWindow):
         boundary_rect = QRectF(0, 0, self.image_width, self.image_height)
         
         for item in self.page_items:
-            page_scale_factor = self.slider_page_scale.value() / 100.0
-            
             paper_w_mm, paper_h_mm = self.get_paper_size_mm()
             m_left, m_right, m_top, m_bottom = self.get_margins_mm()
-            printable_ratio = (paper_h_mm - m_top - m_bottom) / (paper_w_mm - m_left - m_right)
+            printable_w_mm = max(1.0, paper_w_mm - m_left - m_right)
+            printable_h_mm = max(1.0, paper_h_mm - m_top - m_bottom)
+            printable_ratio = printable_h_mm / printable_w_mm
             
             w_rect = item.rect().width()
             h_rect = item.rect().height()
             
-            fixed_x = item.col_idx * w_rect
-            fixed_y = item.row_idx * h_rect
+            # Overlap margin calculation
+            overlap_mm = self.spin_overlap.value()
+            overlap_px = overlap_mm * (w_rect / printable_w_mm)
+            
+            fixed_x = item.col_idx * (w_rect - overlap_px)
+            fixed_y = item.row_idx * (h_rect - overlap_px)
             
             item.set_constraints(lock_x, lock_y, fixed_x, fixed_y, boundary_rect)
 
@@ -1284,96 +1652,190 @@ class MainWindow(QMainWindow):
             paper_w_mm, paper_h_mm = self.get_paper_size_mm()
             m_left, m_right, m_top, m_bottom = self.get_margins_mm()
             
-            dpi = 300.0
-            dpmm = dpi / 25.4
-            
-            paper_w_px = int(paper_w_mm * dpmm)
-            paper_h_px = int(paper_h_mm * dpmm)
-            
-            p_left = int(m_left * dpmm)
-            p_right = int(m_right * dpmm)
-            p_top = int(m_top * dpmm)
-            p_bottom = int(m_bottom * dpmm)
-            
-            printable_w = paper_w_px - p_left - p_right
-            printable_h = paper_h_px - p_top - p_bottom
-            
-            pdf_pages = []
-            
-            if self.radio_mode_a.isChecked():
-                page_canvas = Image.new("RGB", (paper_w_px, paper_h_px), "white")
+            if self.is_pdf:
+                # --- Vector PDF Lossless Crop Engine (using pypdf) ---
+                from pypdf import PdfReader, PdfWriter, Transformation
+                from pypdf.generic import RectangleObject
                 
-                dpi_100_ratio = dpi / 150.0
-                user_scale = self.spin_scale_pct.value() / 100.0
-                final_scale = dpi_100_ratio * user_scale
+                reader = PdfReader(self.input_file_path)
+                writer = PdfWriter()
                 
-                scaled_w = int(self.image_width * final_scale)
-                scaled_h = int(self.image_height * final_scale)
+                # Conversion factor from pixel to points (72 points per inch)
+                pt_size = self.pdf_doc.pagePointSize(self.current_pdf_page)
+                rx = pt_size.width() / self.image_width
+                ry = pt_size.height() / self.image_height
                 
-                scaled_w = max(1, scaled_w)
-                scaled_h = max(1, scaled_h)
+                dpmm = 72.0 / 25.4 # points per mm
                 
-                resized_img = self.pil_image.resize((scaled_w, scaled_h), Image.Resampling.LANCZOS)
+                paper_w_pt = paper_w_mm * dpmm
+                paper_h_pt = paper_h_mm * dpmm
                 
-                if self.chk_center_h.isChecked():
-                    x = p_left + (printable_w - scaled_w) // 2
+                p_left = m_left * dpmm
+                p_right = m_right * dpmm
+                p_top = m_top * dpmm
+                p_bottom = m_bottom * dpmm
+                
+                printable_w = paper_w_pt - p_left - p_right
+                printable_h = paper_h_pt - p_top - p_bottom
+                
+                if self.radio_mode_a.isChecked():
+                    user_scale = self.spin_scale_pct.value() / 100.0
+                    scale = 0.48 * user_scale
+                    
+                    scaled_w = self.image_width * scale
+                    scaled_h = self.image_height * scale
+                    
+                    if self.chk_center_h.isChecked():
+                        x = p_left + (printable_w - scaled_w) / 2
+                    else:
+                        x = p_left
+                        
+                    if self.chk_center_v.isChecked():
+                        y = p_bottom + (printable_h - scaled_h) / 2
+                    else:
+                        y = paper_h_pt - p_top - scaled_h
+                        
+                    src_page = reader.pages[self.current_pdf_page]
+                    blank_page = writer.add_blank_page(width=paper_w_pt, height=paper_h_pt)
+                    
+                    trans = Transformation().scale(scale, scale).translate(x, y)
+                    blank_page.merge_transformed_page(src_page, trans)
+                    
                 else:
-                    x = p_left
+                    sorted_items = sorted(self.page_items, key=lambda x: (x.row_idx, x.col_idx))
                     
-                if self.chk_center_v.isChecked():
-                    y = p_top + (printable_h - scaled_h) // 2
-                else:
-                    y = p_top
+                    for item in sorted_items:
+                        pos = item.pos()
+                        rect = item.rect()
+                        
+                        px_x = pos.x()
+                        px_y = pos.y()
+                        px_w = rect.width()
+                        px_h = rect.height()
+                        
+                        pdf_left = px_x * rx
+                        pdf_right = (px_x + px_w) * rx
+                        pdf_top = pt_size.height() - (px_y * ry)
+                        pdf_bottom = pt_size.height() - ((px_y + px_h) * ry)
+                        
+                        orig_page = reader.pages[self.current_pdf_page]
+                        src_page = orig_page.clone(writer)
+                        blank_page = writer.add_blank_page(width=paper_w_pt, height=paper_h_pt)
+                        
+                        rect_obj = RectangleObject((pdf_left, pdf_bottom, pdf_right, pdf_top))
+                        src_page.mediabox = rect_obj
+                        src_page.cropbox = rect_obj
+                        
+                        crop_w = max(0.1, pdf_right - pdf_left)
+                        crop_h = max(0.1, pdf_top - pdf_bottom)
+                        
+                        scale_x = printable_w / crop_w
+                        scale_y = printable_h / crop_h
+                        
+                        trans = Transformation().translate(-pdf_left, -pdf_bottom).scale(scale_x, scale_y).translate(p_left, p_bottom)
+                        blank_page.merge_transformed_page(src_page, trans)
                 
-                page_canvas.paste(resized_img, (x, y))
-                pdf_pages.append(page_canvas)
-                
-            else:
-                if not self.page_items:
-                    raise Exception(t["msg_no_pages_defined"])
-                
-                sorted_items = sorted(self.page_items, key=lambda x: (x.row_idx, x.col_idx))
-                
-                for item in sorted_items:
-                    pos = item.pos()
-                    rect = item.rect()
+                with open(file_path, "wb") as f:
+                    writer.write(f)
                     
-                    x = int(pos.x())
-                    y = int(pos.y())
-                    w = int(rect.width())
-                    h = int(rect.height())
-                    
-                    x = max(0, min(x, self.image_width - 1))
-                    y = max(0, min(y, self.image_height - 1))
-                    w = max(1, min(w, self.image_width - x))
-                    h = max(1, min(h, self.image_height - y))
-                    
-                    crop_box = (x, y, x + w, y + h)
-                    cropped = self.pil_image.crop(crop_box)
-                    
-                    page_canvas = Image.new("RGB", (paper_w_px, paper_h_px), "white")
-                    
-                    # Scale to printable width/height
-                    resized_cropped = cropped.resize((printable_w, printable_h), Image.Resampling.LANCZOS)
-                    
-                    page_canvas.paste(resized_cropped, (p_left, p_top))
-                    pdf_pages.append(page_canvas)
-            
-            if pdf_pages:
-                pdf_pages[0].save(
-                    file_path,
-                    save_all=True,
-                    append_images=pdf_pages[1:],
-                    resolution=dpi
-                )
-                
                 QMessageBox.information(
                     self, t["msg_success_title"],
-                    t["msg_export_success"].format(pages=len(pdf_pages), path=file_path)
+                    t["msg_export_success"].format(pages=len(writer.pages), path=file_path)
                 )
                 self.status_bar.showMessage(t["status_exported"].format(name=os.path.basename(file_path)), 5000)
+                
             else:
-                raise Exception("No pages generated to export.")
+                # --- Original Raster Image Export Engine (using Pillow) ---
+                dpi = 300.0
+                dpmm = dpi / 25.4
+                
+                paper_w_px = int(paper_w_mm * dpmm)
+                paper_h_px = int(paper_h_mm * dpmm)
+                
+                p_left = int(m_left * dpmm)
+                p_right = int(m_right * dpmm)
+                p_top = int(m_top * dpmm)
+                p_bottom = int(m_bottom * dpmm)
+                
+                printable_w = paper_w_px - p_left - p_right
+                printable_h = paper_h_px - p_top - p_bottom
+                
+                pdf_pages = []
+                
+                if self.radio_mode_a.isChecked():
+                    page_canvas = Image.new("RGB", (paper_w_px, paper_h_px), "white")
+                    
+                    dpi_100_ratio = dpi / 150.0
+                    user_scale = self.spin_scale_pct.value() / 100.0
+                    final_scale = dpi_100_ratio * user_scale
+                    
+                    scaled_w = int(self.image_width * final_scale)
+                    scaled_h = int(self.image_height * final_scale)
+                    
+                    scaled_w = max(1, scaled_w)
+                    scaled_h = max(1, scaled_h)
+                    
+                    resized_img = self.pil_image.resize((scaled_w, scaled_h), Image.Resampling.LANCZOS)
+                    
+                    if self.chk_center_h.isChecked():
+                        x = p_left + (printable_w - scaled_w) // 2
+                    else:
+                        x = p_left
+                        
+                    if self.chk_center_v.isChecked():
+                        y = p_top + (printable_h - scaled_h) // 2
+                    else:
+                        y = p_top
+                    
+                    page_canvas.paste(resized_img, (x, y))
+                    pdf_pages.append(page_canvas)
+                    
+                else:
+                    if not self.page_items:
+                        raise Exception(t["msg_no_pages_defined"])
+                    
+                    sorted_items = sorted(self.page_items, key=lambda x: (x.row_idx, x.col_idx))
+                    
+                    for item in sorted_items:
+                        pos = item.pos()
+                        rect = item.rect()
+                        
+                        x = int(pos.x())
+                        y = int(pos.y())
+                        w = int(rect.width())
+                        h = int(rect.height())
+                        
+                        x = max(0, min(x, self.image_width - 1))
+                        y = max(0, min(y, self.image_height - 1))
+                        w = max(1, min(w, self.image_width - x))
+                        h = max(1, min(h, self.image_height - y))
+                        
+                        crop_box = (x, y, x + w, y + h)
+                        cropped = self.pil_image.crop(crop_box)
+                        
+                        page_canvas = Image.new("RGB", (paper_w_px, paper_h_px), "white")
+                        
+                        # Scale to printable width/height
+                        resized_cropped = cropped.resize((printable_w, printable_h), Image.Resampling.LANCZOS)
+                        
+                        page_canvas.paste(resized_cropped, (p_left, p_top))
+                        pdf_pages.append(page_canvas)
+                
+                if pdf_pages:
+                    pdf_pages[0].save(
+                        file_path,
+                        save_all=True,
+                        append_images=pdf_pages[1:],
+                        resolution=dpi
+                    )
+                    
+                    QMessageBox.information(
+                        self, t["msg_success_title"],
+                        t["msg_export_success"].format(pages=len(pdf_pages), path=file_path)
+                    )
+                    self.status_bar.showMessage(t["status_exported"].format(name=os.path.basename(file_path)), 5000)
+                else:
+                    raise Exception("No pages generated to export.")
                 
         except Exception as e:
             QMessageBox.critical(self, t["msg_export_failed_title"], f"Failed to export PDF:\n{str(e)}")
