@@ -584,6 +584,240 @@ THEMES = {
         QScrollBar::handle:horizontal { background: #1a1a1a; min-width: 20px; border-radius: 5px; border: 1px solid #ffb000; }
         QScrollBar::handle:horizontal:hover { background: #2a2a2a; }
         QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { border: none; background: none; }
+    """,
+    "warm_eye": """
+        QMainWindow { background-color: #FFFDF5; }
+        QWidget { color: #101010; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
+        QGroupBox { border: 1px solid #dcdad4; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #101010; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
+        QPushButton { background-color: #CB4B16; color: white; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QPushButton:hover { background-color: #b33c0d; }
+        QPushButton:pressed { background-color: #993007; }
+        QPushButton#reset_btn { background-color: #f0ede4; color: #101010; border: 1px solid #dcdad4; }
+        QPushButton#reset_btn:hover { background-color: #e3decb; }
+        QPushButton#zoom_btn { background-color: #f0ede4; color: #101010; border: 1px solid #dcdad4; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn:hover { background-color: #e3decb; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #ffffff; border: 1px solid #dcdad4; border-radius: 5px; padding: 5px; color: #101010; }
+        QComboBox::drop-down { border: none; }
+        QSlider::groove:horizontal { border: 1px solid #dcdad4; height: 6px; background: #f0ede4; border-radius: 3px; }
+        QSlider::handle:horizontal { background: #CB4B16; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
+        QSlider::handle:horizontal:hover { background: #b33c0d; }
+        QStatusBar { background-color: #f0ede4; color: #5c5a54; }
+        
+        /* Menu and Dialog Custom Styling */
+        QMenuBar { background-color: #FFFDF5; color: #101010; border-bottom: 1px solid #dcdad4; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item:selected { background-color: #f0ede4; color: #101010; }
+        QMenu { background-color: #ffffff; color: #101010; border: 1px solid #dcdad4; border-radius: 6px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #CB4B16; color: white; }
+        QDialog { background-color: #FFFDF5; }
+        QTextEdit { background-color: #ffffff; color: #101010; border: 1px solid #dcdad4; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        
+        /* Scrollbar Styling */
+        QScrollBar:vertical { border: none; background: #FFFDF5; width: 10px; margin: 0px; }
+        QScrollBar::handle:vertical { background: #dcdad4; min-height: 20px; border-radius: 5px; }
+        QScrollBar::handle:vertical:hover { background: #cbbaa5; }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { border: none; background: none; }
+        QScrollBar:horizontal { border: none; background: #FFFDF5; height: 10px; margin: 0px; }
+        QScrollBar::handle:horizontal { background: #dcdad4; min-width: 20px; border-radius: 5px; }
+        QScrollBar::handle:horizontal:hover { background: #cbbaa5; }
+        QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { border: none; background: none; }
+    """,
+    "cyberpunk": """
+        QMainWindow { background-color: #0c0f12; }
+        QWidget { color: #00f0ff; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
+        QGroupBox { border: 1px solid #ff007f; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #ff007f; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
+        QPushButton { background-color: #ff007f; color: #000000; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QPushButton:hover { background-color: #ff3399; }
+        QPushButton:pressed { background-color: #cc0066; }
+        QPushButton#reset_btn { background-color: #121820; color: #00f0ff; border: 1px solid #00f0ff; }
+        QPushButton#reset_btn:hover { background-color: #1a2530; }
+        QPushButton#zoom_btn { background-color: #121820; color: #00f0ff; border: 1px solid #00f0ff; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn:hover { background-color: #1a2530; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #121820; border: 1px solid #00f0ff; border-radius: 5px; padding: 5px; color: #00f0ff; }
+        QComboBox::drop-down { border: none; }
+        QSlider::groove:horizontal { border: 1px solid #00f0ff; height: 6px; background: #121820; border-radius: 3px; }
+        QSlider::handle:horizontal { background: #ff007f; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
+        QSlider::handle:horizontal:hover { background: #ff3399; }
+        QStatusBar { background-color: #121820; color: #00f0ff; }
+        
+        /* Menu and Dialog Custom Styling */
+        QMenuBar { background-color: #0c0f12; color: #00f0ff; border-bottom: 1px solid #ff007f; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item:selected { background-color: #121820; color: #ff007f; }
+        QMenu { background-color: #121820; color: #00f0ff; border: 1px solid #ff007f; border-radius: 6px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #ff007f; color: #000000; }
+        QDialog { background-color: #0c0f12; }
+        QTextEdit { background-color: #121820; color: #00f0ff; border: 1px solid #ff007f; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        
+        /* Scrollbar Styling */
+        QScrollBar:vertical { border: none; background: #0c0f12; width: 10px; margin: 0px; }
+        QScrollBar::handle:vertical { background: #121820; min-height: 20px; border-radius: 5px; border: 1px solid #00f0ff; }
+        QScrollBar::handle:vertical:hover { background: #1a2530; }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { border: none; background: none; }
+        QScrollBar:horizontal { border: none; background: #0c0f12; height: 10px; margin: 0px; }
+        QScrollBar::handle:horizontal { background: #121820; min-width: 20px; border-radius: 5px; border: 1px solid #00f0ff; }
+        QScrollBar::handle:horizontal:hover { background: #1a2530; }
+        QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { border: none; background: none; }
+    """,
+    "dracula": """
+        QMainWindow { background-color: #282a36; }
+        QWidget { color: #f8f8f2; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
+        QGroupBox { border: 1px solid #44475a; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #bd93f9; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
+        QPushButton { background-color: #bd93f9; color: #282a36; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QPushButton:hover { background-color: #caa9fa; }
+        QPushButton:pressed { background-color: #a879e6; }
+        QPushButton#reset_btn { background-color: #44475a; color: #f8f8f2; border: 1px solid #6272a4; }
+        QPushButton#reset_btn:hover { background-color: #6272a4; }
+        QPushButton#zoom_btn { background-color: #44475a; color: #f8f8f2; border: 1px solid #6272a4; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn:hover { background-color: #6272a4; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #1d1f27; border: 1px solid #44475a; border-radius: 5px; padding: 5px; color: #f8f8f2; }
+        QComboBox::drop-down { border: none; }
+        QSlider::groove:horizontal { border: 1px solid #44475a; height: 6px; background: #1d1f27; border-radius: 3px; }
+        QSlider::handle:horizontal { background: #bd93f9; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
+        QSlider::handle:horizontal:hover { background: #caa9fa; }
+        QStatusBar { background-color: #21222c; color: #6272a4; }
+        
+        /* Menu and Dialog Custom Styling */
+        QMenuBar { background-color: #282a36; color: #f8f8f2; border-bottom: 1px solid #44475a; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item:selected { background-color: #44475a; color: #bd93f9; }
+        QMenu { background-color: #1d1f27; color: #f8f8f2; border: 1px solid #44475a; border-radius: 6px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #bd93f9; color: #282a36; }
+        QDialog { background-color: #282a36; }
+        QTextEdit { background-color: #1d1f27; color: #f8f8f2; border: 1px solid #44475a; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        
+        /* Scrollbar Styling */
+        QScrollBar:vertical { border: none; background: #282a36; width: 10px; margin: 0px; }
+        QScrollBar::handle:vertical { background: #44475a; min-height: 20px; border-radius: 5px; }
+        QScrollBar::handle:vertical:hover { background: #6272a4; }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { border: none; background: none; }
+        QScrollBar:horizontal { border: none; background: #282a36; height: 10px; margin: 0px; }
+        QScrollBar::handle:horizontal { background: #44475a; min-width: 20px; border-radius: 5px; }
+        QScrollBar::handle:horizontal:hover { background: #6272a4; }
+        QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { border: none; background: none; }
+    """,
+    "solarized_dark": """
+        QMainWindow { background-color: #002b36; }
+        QWidget { color: #839496; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
+        QGroupBox { border: 1px solid #073642; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #93a1a1; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
+        QPushButton { background-color: #2aa198; color: #002b36; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QPushButton:hover { background-color: #3bc4b9; }
+        QPushButton:pressed { background-color: #208079; }
+        QPushButton#reset_btn { background-color: #073642; color: #839496; border: 1px solid #586e75; }
+        QPushButton#reset_btn:hover { background-color: #586e75; color: #fdf6e3; }
+        QPushButton#zoom_btn { background-color: #073642; color: #839496; border: 1px solid #586e75; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn:hover { background-color: #586e75; color: #fdf6e3; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #00212b; border: 1px solid #073642; border-radius: 5px; padding: 5px; color: #93a1a1; }
+        QComboBox::drop-down { border: none; }
+        QSlider::groove:horizontal { border: 1px solid #073642; height: 6px; background: #00212b; border-radius: 3px; }
+        QSlider::handle:horizontal { background: #2aa198; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
+        QSlider::handle:horizontal:hover { background: #3bc4b9; }
+        QStatusBar { background-color: #073642; color: #586e75; }
+        
+        /* Menu and Dialog Custom Styling */
+        QMenuBar { background-color: #002b36; color: #839496; border-bottom: 1px solid #073642; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item:selected { background-color: #073642; color: #93a1a1; }
+        QMenu { background-color: #00212b; color: #839496; border: 1px solid #073642; border-radius: 6px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #2aa198; color: #002b36; }
+        QDialog { background-color: #002b36; }
+        QTextEdit { background-color: #00212b; color: #93a1a1; border: 1px solid #073642; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        
+        /* Scrollbar Styling */
+        QScrollBar:vertical { border: none; background: #002b36; width: 10px; margin: 0px; }
+        QScrollBar::handle:vertical { background: #073642; min-height: 20px; border-radius: 5px; }
+        QScrollBar::handle:vertical:hover { background: #586e75; }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { border: none; background: none; }
+        QScrollBar:horizontal { border: none; background: #002b36; height: 10px; margin: 0px; }
+        QScrollBar::handle:horizontal { background: #073642; min-width: 20px; border-radius: 5px; }
+        QScrollBar::handle:horizontal:hover { background: #586e75; }
+        QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { border: none; background: none; }
+    """,
+    "lavender": """
+        QMainWindow { background-color: #f3f0f7; }
+        QWidget { color: #4a3e56; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
+        QGroupBox { border: 1px solid #dcd5e4; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #4a3e56; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
+        QPushButton { background-color: #8a70a4; color: white; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QPushButton:hover { background-color: #9e87b7; }
+        QPushButton:pressed { background-color: #72598c; }
+        QPushButton#reset_btn { background-color: #eae3f1; color: #4a3e56; border: 1px solid #dcd5e4; }
+        QPushButton#reset_btn:hover { background-color: #dcd5e4; }
+        QPushButton#zoom_btn { background-color: #eae3f1; color: #4a3e56; border: 1px solid #dcd5e4; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn:hover { background-color: #dcd5e4; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #ffffff; border: 1px solid #dcd5e4; border-radius: 5px; padding: 5px; color: #4a3e56; }
+        QComboBox::drop-down { border: none; }
+        QSlider::groove:horizontal { border: 1px solid #dcd5e4; height: 6px; background: #eae3f1; border-radius: 3px; }
+        QSlider::handle:horizontal { background: #8a70a4; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
+        QSlider::handle:horizontal:hover { background: #9e87b7; }
+        QStatusBar { background-color: #eae3f1; color: #7b6d88; }
+        
+        /* Menu and Dialog Custom Styling */
+        QMenuBar { background-color: #f3f0f7; color: #4a3e56; border-bottom: 1px solid #dcd5e4; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item:selected { background-color: #eae3f1; color: #4a3e56; }
+        QMenu { background-color: #ffffff; color: #4a3e56; border: 1px solid #dcd5e4; border-radius: 6px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #8a70a4; color: white; }
+        QDialog { background-color: #f3f0f7; }
+        QTextEdit { background-color: #ffffff; color: #4a3e56; border: 1px solid #dcd5e4; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        
+        /* Scrollbar Styling */
+        QScrollBar:vertical { border: none; background: #f3f0f7; width: 10px; margin: 0px; }
+        QScrollBar::handle:vertical { background: #dcd5e4; min-height: 20px; border-radius: 5px; }
+        QScrollBar::handle:vertical:hover { background: #c5b9d3; }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { border: none; background: none; }
+        QScrollBar:horizontal { border: none; background: #f3f0f7; height: 10px; margin: 0px; }
+        QScrollBar::handle:horizontal { background: #dcd5e4; min-width: 20px; border-radius: 5px; }
+        QScrollBar::handle:horizontal:hover { background: #c5b9d3; }
+        QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { border: none; background: none; }
+    """,
+    "retro_terminal": """
+        QMainWindow { background-color: #020a02; }
+        QWidget { color: #39ff14; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        QGroupBox { border: 1px solid #39ff14; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #39ff14; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
+        QPushButton { background-color: #39ff14; color: #020a02; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QPushButton:hover { background-color: #66ff66; }
+        QPushButton:pressed { background-color: #00cc00; }
+        QPushButton#reset_btn { background-color: #020a02; color: #39ff14; border: 1px solid #39ff14; }
+        QPushButton#reset_btn:hover { background-color: #0a1f0a; }
+        QPushButton#zoom_btn { background-color: #020a02; color: #39ff14; border: 1px solid #39ff14; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn:hover { background-color: #0a1f0a; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #020a02; border: 1px solid #39ff14; border-radius: 5px; padding: 5px; color: #39ff14; }
+        QComboBox::drop-down { border: none; }
+        QSlider::groove:horizontal { border: 1px solid #39ff14; height: 6px; background: #020a02; border-radius: 3px; }
+        QSlider::handle:horizontal { background: #39ff14; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
+        QSlider::handle:horizontal:hover { background: #66ff66; }
+        QStatusBar { background-color: #020a02; color: #39ff14; border-top: 1px solid #39ff14; }
+        
+        /* Menu and Dialog Custom Styling */
+        QMenuBar { background-color: #020a02; color: #39ff14; border-bottom: 1px solid #39ff14; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item:selected { background-color: #0a1f0a; color: #39ff14; }
+        QMenu { background-color: #020a02; color: #39ff14; border: 1px solid #39ff14; border-radius: 6px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #39ff14; color: #020a02; }
+        QDialog { background-color: #020a02; }
+        QTextEdit { background-color: #020a02; color: #39ff14; border: 1px solid #39ff14; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        
+        /* Scrollbar Styling */
+        QScrollBar:vertical { border: none; background: #020a02; width: 10px; margin: 0px; }
+        QScrollBar::handle:vertical { background: #020a02; min-height: 20px; border-radius: 5px; border: 1px solid #39ff14; }
+        QScrollBar::handle:vertical:hover { background: #0a1f0a; }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { border: none; background: none; }
+        QScrollBar:horizontal { border: none; background: #020a02; height: 10px; margin: 0px; }
+        QScrollBar::handle:horizontal { background: #020a02; min-width: 20px; border-radius: 5px; border: 1px solid #39ff14; }
+        QScrollBar::handle:horizontal:hover { background: #0a1f0a; }
+        QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { border: none; background: none; }
     """
 }
 
@@ -633,6 +867,7 @@ class MainWindow(QMainWindow):
         # Default States
         self.current_lang = "zh"
         self.current_theme = "dark"
+        self.current_optimize_algo_idx = 0
         
         # Graphics view elements
         self.scene = QGraphicsScene(self)
@@ -676,6 +911,12 @@ class MainWindow(QMainWindow):
         self.action_theme_nordic = self.menu_theme.addAction("Nordic Blue (北欧极地蓝)")
         self.action_theme_forest = self.menu_theme.addAction("Forest Green (森林绿意)")
         self.action_theme_matrix = self.menu_theme.addAction("Matrix Amber (黑客帝国)")
+        self.action_theme_warm_eye = self.menu_theme.addAction("Warm Eye-Care (温和护眼纸色)")
+        self.action_theme_cyberpunk = self.menu_theme.addAction("Cyberpunk Neon (赛博朋克霓虹)")
+        self.action_theme_dracula = self.menu_theme.addAction("Dracula Vampire (吸血鬼猎人)")
+        self.action_theme_solarized_dark = self.menu_theme.addAction("Solarized Dark (深海绿洲)")
+        self.action_theme_lavender = self.menu_theme.addAction("Lavender Breeze (薰衣草之风)")
+        self.action_theme_retro_terminal = self.menu_theme.addAction("Retro Terminal (复古终端)")
         self.action_theme_custom = self.menu_theme.addAction("Custom CSS (自定义CSS...)")
         
         # Central widget and layout
@@ -913,7 +1154,7 @@ class MainWindow(QMainWindow):
         self.spin_page_scale.setRange(10, 300)
         self.spin_page_scale.setValue(100)
         self.spin_page_scale.setSuffix("%")
-        self.spin_page_scale.setFixedWidth(65)
+        self.spin_page_scale.setFixedWidth(90)
         
         scale_ctrl_layout.addWidget(self.slider_page_scale)
         scale_ctrl_layout.addWidget(self.spin_page_scale)
@@ -1067,6 +1308,12 @@ class MainWindow(QMainWindow):
         self.action_theme_nordic.triggered.connect(lambda: self.set_theme("nordic"))
         self.action_theme_forest.triggered.connect(lambda: self.set_theme("forest"))
         self.action_theme_matrix.triggered.connect(lambda: self.set_theme("matrix"))
+        self.action_theme_warm_eye.triggered.connect(lambda: self.set_theme("warm_eye"))
+        self.action_theme_cyberpunk.triggered.connect(lambda: self.set_theme("cyberpunk"))
+        self.action_theme_dracula.triggered.connect(lambda: self.set_theme("dracula"))
+        self.action_theme_solarized_dark.triggered.connect(lambda: self.set_theme("solarized_dark"))
+        self.action_theme_lavender.triggered.connect(lambda: self.set_theme("lavender"))
+        self.action_theme_retro_terminal.triggered.connect(lambda: self.set_theme("retro_terminal"))
         self.action_theme_custom.triggered.connect(lambda: self.set_theme("custom"))
         
         # Language trigger connections
@@ -1121,6 +1368,12 @@ class MainWindow(QMainWindow):
                 "nordic": "北欧极地蓝 (Nordic Blue)",
                 "forest": "森林绿意 (Forest Green)",
                 "matrix": "黑客帝国 (Matrix Amber)",
+                "warm_eye": "温和护眼纸色 (Warm Eye-Care)",
+                "cyberpunk": "赛博朋克霓虹 (Cyberpunk Neon)",
+                "dracula": "吸血鬼猎人 (Dracula Vampire)",
+                "solarized_dark": "深海绿洲 (Solarized Dark)",
+                "lavender": "薰衣草之风 (Lavender Breeze)",
+                "retro_terminal": "复古终端 (Retro Terminal)",
                 "custom": "自定义 CSS (Custom QSS)..."
             },
             "en": {
@@ -1129,6 +1382,12 @@ class MainWindow(QMainWindow):
                 "nordic": "Nordic Blue",
                 "forest": "Forest Green",
                 "matrix": "Matrix Amber",
+                "warm_eye": "Warm Eye-Care",
+                "cyberpunk": "Cyberpunk Neon",
+                "dracula": "Dracula Vampire",
+                "solarized_dark": "Solarized Dark",
+                "lavender": "Lavender Breeze",
+                "retro_terminal": "Retro Terminal",
                 "custom": "Custom CSS..."
             },
             "ja": {
@@ -1137,6 +1396,12 @@ class MainWindow(QMainWindow):
                 "nordic": "ノルディックブルー",
                 "forest": "フォレストグリーン",
                 "matrix": "マトリックスアンバー",
+                "warm_eye": "温かみのあるアイケア色",
+                "cyberpunk": "サイバーパンクネอน",
+                "dracula": "ドラキュラヴァンパイア",
+                "solarized_dark": "ソラライズドダーク",
+                "lavender": "ラベンダーブリーズ",
+                "retro_terminal": "レトロターミナル",
                 "custom": "カスタムQSS..."
             },
             "fr": {
@@ -1145,6 +1410,12 @@ class MainWindow(QMainWindow):
                 "nordic": "Bleu Nordique",
                 "forest": "Vert Forêt",
                 "matrix": "Ambre Matrice",
+                "warm_eye": "Protection des Yeux",
+                "cyberpunk": "Néon Cyberpunk",
+                "dracula": "Dracula Vampire",
+                "solarized_dark": "Solarisé Sombre",
+                "lavender": "Brise de Lavande",
+                "retro_terminal": "Terminal Rétro",
                 "custom": "QSS Personnalisé..."
             },
             "ru": {
@@ -1153,6 +1424,12 @@ class MainWindow(QMainWindow):
                 "nordic": "Северный синий",
                 "forest": "Лесной зеленый",
                 "matrix": "Янтарная матрица",
+                "warm_eye": "Теплый для глаз",
+                "cyberpunk": "Киберпанк неон",
+                "dracula": "Вампир Дракула",
+                "solarized_dark": "Соляризованный темный",
+                "lavender": "Лавандовый бриз",
+                "retro_terminal": "Ретро терминал",
                 "custom": "Пользовательский QSS..."
             },
             "ar": {
@@ -1161,6 +1438,12 @@ class MainWindow(QMainWindow):
                 "nordic": "أزرق شمالي",
                 "forest": "أخضر غابة",
                 "matrix": "كهرماني مصفوفة",
+                "warm_eye": "حماية العين الدافئ",
+                "cyberpunk": "سايبربانك نيون",
+                "dracula": "دراكولا مصاص دماء",
+                "solarized_dark": "سولاريزد مظلم",
+                "lavender": "نسيم الخزامى",
+                "retro_terminal": "شاشة ريترو",
                 "custom": "QSS مخصص..."
             }
         }
@@ -1178,6 +1461,12 @@ class MainWindow(QMainWindow):
         self.action_theme_nordic.setText(t_theme["nordic"])
         self.action_theme_forest.setText(t_theme["forest"])
         self.action_theme_matrix.setText(t_theme["matrix"])
+        self.action_theme_warm_eye.setText(t_theme["warm_eye"])
+        self.action_theme_cyberpunk.setText(t_theme["cyberpunk"])
+        self.action_theme_dracula.setText(t_theme["dracula"])
+        self.action_theme_solarized_dark.setText(t_theme["solarized_dark"])
+        self.action_theme_lavender.setText(t_theme["lavender"])
+        self.action_theme_retro_terminal.setText(t_theme["retro_terminal"])
         self.action_theme_custom.setText(t_theme["custom"])
         
         # Sidebar Groups
@@ -1494,15 +1783,33 @@ class MainWindow(QMainWindow):
         QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
         
         try:
-            # 1. Convert PIL image to grayscale numpy array
+            # Convert PIL image to grayscale numpy array
             img_gray = np.array(self.pil_image.convert("L"))
-            # Calculate horizontal differences (energy)
-            diff = np.abs(np.diff(img_gray, axis=1))
-            row_energy = np.sum(diff, axis=1)
             
-            # Smooth row energy with a simple 5-pixel moving average to reduce noise
-            window_size = 5
-            smoothed_energy = np.convolve(row_energy, np.ones(window_size)/window_size, mode='same')
+            # Determine background type (light or dark)
+            h_im, w_im = img_gray.shape
+            corners = [img_gray[0, 0], img_gray[0, w_im-1], img_gray[h_im-1, 0], img_gray[h_im-1, w_im-1]]
+            bg_light = np.median(corners) > 127
+            
+            # 4 Algorithms choices
+            algo_idx = self.current_optimize_algo_idx
+            self.current_optimize_algo_idx = (self.current_optimize_algo_idx + 1) % 4
+            
+            algo_names_zh = [
+                "局部变化能量极小法",
+                "最大背景空白投影法",
+                "宽域边缘密度谷法",
+                "距离加权能量法"
+            ]
+            algo_names_en = [
+                "Local Energy Minima",
+                "Clean Background Projection",
+                "Broad Edge Density Valley",
+                "Distance-Weighted Energy"
+            ]
+            
+            positions = [0.0] * rows
+            positions[0] = 0.0
             
             # Get current layout parameters
             paper_w_mm, paper_h_mm = self.get_paper_size_mm()
@@ -1518,24 +1825,108 @@ class MainWindow(QMainWindow):
             overlap_mm = self.spin_overlap.value()
             overlap_px = overlap_mm * (w_rect / printable_w_mm)
             
-            # Run sequential split optimization
-            positions = [0.0] * rows
-            positions[0] = 0.0
-            
-            for r in range(1, rows):
-                default_split = positions[r-1] + h_rect - overlap_px
-                # Search window: +/- 15% of h_rect
-                search_limit = int(h_rect * 0.15)
-                search_start = max(0, int(default_split - search_limit))
-                search_end = min(self.image_height - 1, int(default_split + search_limit))
+            if algo_idx == 0:
+                # Algorithm 1: Local Energy Minima (Moving Average 5px)
+                # Calculate horizontal differences (energy)
+                diff = np.abs(np.diff(img_gray, axis=1))
+                row_energy = np.sum(diff, axis=1)
+                window_size = 5
+                smoothed_energy = np.convolve(row_energy, np.ones(window_size)/window_size, mode='same')
                 
-                if search_end > search_start:
-                    window_energy = smoothed_energy[search_start:search_end]
-                    min_idx = np.argmin(window_energy)
-                    optimal_split = search_start + min_idx
-                    positions[r] = optimal_split
+                for r in range(1, rows):
+                    default_split = positions[r-1] + h_rect - overlap_px
+                    search_limit = int(h_rect * 0.15)
+                    search_start = max(0, int(default_split - search_limit))
+                    search_end = min(self.image_height - 1, int(default_split + search_limit))
+                    
+                    if search_end > search_start:
+                        window_energy = smoothed_energy[search_start:search_end]
+                        min_idx = np.argmin(window_energy)
+                        positions[r] = search_start + min_idx
+                    else:
+                        positions[r] = default_split
+                        
+            elif algo_idx == 1:
+                # Algorithm 2: Clean Background Projection
+                # If bg_light, higher pixel value is better (whiter).
+                # If not bg_light, lower pixel value is better (darker).
+                row_means = np.mean(img_gray, axis=1)
+                if bg_light:
+                    score = -row_means
                 else:
-                    positions[r] = default_split
+                    score = row_means
+                    
+                # Smooth slightly with 3px window
+                score = np.convolve(score, np.ones(3)/3, mode='same')
+                
+                for r in range(1, rows):
+                    default_split = positions[r-1] + h_rect - overlap_px
+                    search_limit = int(h_rect * 0.15)
+                    search_start = max(0, int(default_split - search_limit))
+                    search_end = min(self.image_height - 1, int(default_split + search_limit))
+                    
+                    if search_end > search_start:
+                        window_score = score[search_start:search_end]
+                        min_idx = np.argmin(window_score)
+                        positions[r] = search_start + min_idx
+                    else:
+                        positions[r] = default_split
+                        
+            elif algo_idx == 2:
+                # Algorithm 3: Broad Edge Density Valley
+                grad_y = np.abs(img_gray[1:, :] - img_gray[:-1, :])
+                edge_density = np.sum(grad_y, axis=1)
+                edge_density = np.append(edge_density, 0) # align length
+                
+                # Smooth with a wide 15px window to find broad valleys (stable gaps)
+                window_size = 15
+                smoothed_edges = np.convolve(edge_density, np.ones(window_size)/window_size, mode='same')
+                
+                for r in range(1, rows):
+                    default_split = positions[r-1] + h_rect - overlap_px
+                    search_limit = int(h_rect * 0.15)
+                    search_start = max(0, int(default_split - search_limit))
+                    search_end = min(self.image_height - 1, int(default_split + search_limit))
+                    
+                    if search_end > search_start:
+                        window_edges = smoothed_edges[search_start:search_end]
+                        min_idx = np.argmin(window_edges)
+                        positions[r] = search_start + min_idx
+                    else:
+                        positions[r] = default_split
+                        
+            else:
+                # Algorithm 4: Distance-Weighted Energy
+                diff = np.abs(np.diff(img_gray, axis=1))
+                row_energy = np.sum(diff, axis=1)
+                window_size = 5
+                smoothed_energy = np.convolve(row_energy, np.ones(window_size)/window_size, mode='same')
+                
+                # Normalize energy to [0, 1] locally or globally to apply penalty
+                energy_min = np.min(smoothed_energy)
+                energy_max = np.max(smoothed_energy)
+                energy_range = max(1.0, energy_max - energy_min)
+                norm_energy = (smoothed_energy - energy_min) / energy_range
+                
+                for r in range(1, rows):
+                    default_split = positions[r-1] + h_rect - overlap_px
+                    search_limit = int(h_rect * 0.15)
+                    search_start = max(0, int(default_split - search_limit))
+                    search_end = min(self.image_height - 1, int(default_split + search_limit))
+                    
+                    if search_end > search_start:
+                        window_size_w = search_end - search_start
+                        penalties = np.zeros(window_size_w)
+                        for idx in range(window_size_w):
+                            y = search_start + idx
+                            dist = (y - default_split) / max(1.0, search_limit)
+                            penalties[idx] = 1.0 + 2.0 * (dist ** 2)
+                            
+                        window_cost = norm_energy[search_start:search_end] * penalties
+                        min_idx = np.argmin(window_cost)
+                        positions[r] = search_start + min_idx
+                    else:
+                        positions[r] = default_split
             
             # Update the page items in the scene
             for item in self.page_items:
@@ -1545,8 +1936,17 @@ class MainWindow(QMainWindow):
                 item.fixed_y = new_y
                 
             self.scene.update()
-            t = TRANSLATIONS[self.current_lang]
-            self.status_bar.showMessage(t["status_optimized"], 3000)
+            
+            lang = self.current_lang
+            algo_num = algo_idx + 1
+            if lang == "zh":
+                algo_name = algo_names_zh[algo_idx]
+                msg = f"[算法 {algo_num}/4: {algo_name}] 接缝优化已完成。再次点击可切换其他算法。"
+            else:
+                algo_name = algo_names_en[algo_idx]
+                msg = f"[Alg {algo_num}/4: {algo_name}] Seam optimized. Click again to switch algorithm."
+                
+            self.status_bar.showMessage(msg, 5000)
             
         except Exception as e:
             QMessageBox.critical(self, "Optimization Error", str(e))
@@ -1786,7 +2186,7 @@ class MainWindow(QMainWindow):
             self.update_zoom_label(self.view.transform().m11())
 
     def update_zoom_icons(self):
-        is_light = self.current_theme == "light"
+        is_light = self.current_theme in ["light", "warm_eye", "lavender"]
         icon_color = QColor("#1d1d1f") if is_light else QColor("#ffffff")
         
         # Zoom In
