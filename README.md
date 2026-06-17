@@ -33,6 +33,8 @@
 2. **可视化交互接缝线拖拽**：在画布上直接通过鼠标悬停 and 拖拽虚线来微调局部接缝边界，而不需要拖拽整张纸。
 3. **自定义纸张模版管理**：支持将常用的自定义长宽与边距参数保存为快捷模版，方便下次直接套用。
 4. **多格式导出支持 (Word / PPT 等)**：扩展导出目标格式，支持将切分裁剪后的图块自动插入/排版至 Word 文档 (.docx) 或 PPT 幻灯片 (.pptx) 的各个页面中，便于集成至办公报告。
+5. **预设 CSS 模板拓展与护眼色 (CSS Theme Expansion)**：提供至少 10 套内置 CSS 样式预设，其中包含一款特殊的柔和护眼纸张色模板（背景色 `#FFFDF5`、文字色 `#101010`、强调色 `#CB4B16`）。
+6. **独立应用 ICON 图标打包 (Application Icon Bundling)**：在下一版本打包发布时，将独立的应用图标文件（如 `.ico`）集成至 PyInstaller 打包构建流程中，使生成的 `.exe` 可执行程序自带专有的品牌视觉图标。
 
 ### 🚀 运行与启动
 确保您的系统已安装 Python 3.10+，然后安装依赖：
@@ -74,7 +76,9 @@ The following features are documented in the maintenance block for future iterat
 1. **Multi-column Flow Layout wrapping**: Support split grid wrapping for extremely wide mind maps in a Z-pattern, managing physical seam offsets automatically.
 2. **Interactive Seam Line Dragging**: Introduce visual dashed seam lines that can be directly dragged on the canvas to fine-tune individual tile borders instead of moving entire page items.
 3. **Custom Paper Profile Templates**: Save and load custom sizes and layouts as reusable presets.
-4. **Multi-Format Export (Word, PPT, etc.)**: Expand export formats to allow embedding the sliced image tiles automatically into Microsoft Word (.docx) or PowerPoint (.pptx) documents.
+4. **Multi-format Export (Word, PPT, etc.)**: Expand export formats to allow embedding the sliced image tiles automatically into Microsoft Word (.docx) or PowerPoint (.pptx) documents.
+5. **Predefined CSS Style Panel Expansion**: Offer at least 10 built-in CSS styling presets, including a dedicated warm eye-care template (Background `#FFFDF5`, Foreground `#101010`, Accent `#CB4B16`).
+6. **Executable Icon Integration**: Bundle a custom application icon (`.ico` / `.png`) directly into the executable during PyInstaller packaging so that the program displays its own branded icon.
 
 ### 🚀 Getting Started
 Ensure Python 3.10+ is installed, then install requirements:
