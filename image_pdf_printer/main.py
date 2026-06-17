@@ -376,6 +376,18 @@ TRANSLATIONS = {
     }
 }
 
+PRESET_PAPERS = [
+    ("A0", 841, 1189),
+    ("A1", 594, 841),
+    ("A2", 420, 594),
+    ("A3", 297, 420),
+    ("A4", 210, 297),
+    ("A5", 148, 210),
+    ("B3", 353, 500),
+    ("B4", 250, 353),
+    ("B5", 176, 250),
+]
+
 # Stylesheet presets (5 themes)
 THEMES = {
     "dark": """
@@ -602,6 +614,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Image & PDF Advanced Print Preview & Tiling Tool")
         self.resize(1280, 800)
+        self.setAcceptDrops(True)
         
         # State variables
         self.input_file_path = ""
@@ -879,16 +892,33 @@ class MainWindow(QMainWindow):
         locks_layout.addWidget(self.chk_lock_v)
         mode_b_layout.addWidget(locks_widget)
         
-        # Scale Slider
+        # Scale Slider & SpinBox
         slider_widget = QWidget(self.panel_mode_b)
         slider_layout = QVBoxLayout(slider_widget)
         slider_layout.setContentsMargins(0, 0, 0, 0)
         self.lbl_page_scale = QLabel("Paper Size Scale: 100%", slider_widget)
-        self.slider_page_scale = QSlider(Qt.Orientation.Horizontal, slider_widget)
+        slider_layout.addWidget(self.lbl_page_scale)
+        
+        # Horizontal container for QSlider and QSpinBox
+        scale_ctrl_widget = QWidget(slider_widget)
+        scale_ctrl_layout = QHBoxLayout(scale_ctrl_widget)
+        scale_ctrl_layout.setContentsMargins(0, 0, 0, 0)
+        scale_ctrl_layout.setSpacing(5)
+        
+        self.slider_page_scale = QSlider(Qt.Orientation.Horizontal, scale_ctrl_widget)
         self.slider_page_scale.setRange(10, 300)
         self.slider_page_scale.setValue(100)
-        slider_layout.addWidget(self.lbl_page_scale)
-        slider_layout.addWidget(self.slider_page_scale)
+        
+        self.spin_page_scale = QSpinBox(scale_ctrl_widget)
+        self.spin_page_scale.setRange(10, 300)
+        self.spin_page_scale.setValue(100)
+        self.spin_page_scale.setSuffix("%")
+        self.spin_page_scale.setFixedWidth(65)
+        
+        scale_ctrl_layout.addWidget(self.slider_page_scale)
+        scale_ctrl_layout.addWidget(self.spin_page_scale)
+        
+        slider_layout.addWidget(scale_ctrl_widget)
         
         # Auto-fit scale button
         self.btn_autofit = QPushButton("Auto-fit Scale to Cover Image", slider_widget)
@@ -936,11 +966,11 @@ class MainWindow(QMainWindow):
         toolbar_layout.addStretch()
         
         # Zoom controls
-        self.btn_zoom_in = QPushButton("+", toolbar)
+        self.btn_zoom_in = QPushButton("", toolbar)
         self.btn_zoom_in.setFixedSize(30, 30)
         self.btn_zoom_in.setObjectName("zoom_btn")
         
-        self.btn_zoom_out = QPushButton("-", toolbar)
+        self.btn_zoom_out = QPushButton("", toolbar)
         self.btn_zoom_out.setFixedSize(30, 30)
         self.btn_zoom_out.setObjectName("zoom_btn")
         
@@ -988,6 +1018,7 @@ class MainWindow(QMainWindow):
             if dialog.exec() == QDialog.DialogCode.Accepted:
                 custom_qss = dialog.get_css()
                 QApplication.instance().setStyleSheet(custom_qss)
+        self.update_zoom_icons()
 
     def connect_signals(self):
         # File operations
@@ -1022,7 +1053,7 @@ class MainWindow(QMainWindow):
         self.chk_lock_h.toggled.connect(self.update_drag_constraints)
         self.chk_lock_v.toggled.connect(self.update_drag_constraints)
         
-        self.slider_page_scale.valueChanged.connect(self.on_page_scale_slider_changed)
+        self.slider_page_scale.valueChanged.connect(self.on_slider_scale_changed)
         self.btn_autofit.clicked.connect(self.on_autofit_clicked)
         self.btn_optimize_seams.clicked.connect(self.on_optimize_seams_clicked)
         
@@ -1046,9 +1077,13 @@ class MainWindow(QMainWindow):
         self.action_lang_ru.triggered.connect(lambda: self.change_language("ru"))
         self.action_lang_ar.triggered.connect(lambda: self.change_language("ar"))
         
+        # Sync slider and spinbox for page scale
+        self.slider_page_scale.valueChanged.connect(self.on_slider_scale_changed)
+        self.spin_page_scale.valueChanged.connect(self.on_spin_scale_changed)
+        
         # View zoom controls
-        self.btn_zoom_in.clicked.connect(lambda: self.view.scale(1.2, 1.2))
-        self.btn_zoom_out.clicked.connect(lambda: self.view.scale(1.0/1.2, 1.0/1.2))
+        self.btn_zoom_in.clicked.connect(self.zoom_in)
+        self.btn_zoom_out.clicked.connect(self.zoom_out)
         self.btn_zoom_fit.clicked.connect(self.zoom_fit_all)
         self.btn_zoom_width.clicked.connect(self.zoom_fit_width)
         
@@ -1056,7 +1091,7 @@ class MainWindow(QMainWindow):
         self.view.zoom_changed_callback = self.update_zoom_label
 
     def on_paper_size_combo_changed(self):
-        is_custom = self.combo_paper_size.currentIndex() == 2
+        is_custom = self.combo_paper_size.currentIndex() == len(PRESET_PAPERS)
         self.custom_paper_widget.setVisible(is_custom)
         self.update_preview()
 
@@ -1159,7 +1194,10 @@ class MainWindow(QMainWindow):
         self.combo_paper_size.clear()
         
         # Translate the options (Custom added)
-        paper_options = ["A4 (210 x 297 mm)", "A3 (297 x 420 mm)"]
+        paper_options = []
+        for name, w, h in PRESET_PAPERS:
+            paper_options.append(f"{name} ({w} x {h} mm)")
+            
         if lang == "zh":
             paper_options.append("自定义纸张 (Custom)...")
         elif lang == "ja":
@@ -1174,7 +1212,8 @@ class MainWindow(QMainWindow):
             paper_options.append("Custom Paper...")
             
         self.combo_paper_size.addItems(paper_options)
-        self.combo_paper_size.setCurrentIndex(curr_paper if curr_paper >= 0 else 0)
+        # Default to A4 (index 4) if not set yet
+        self.combo_paper_size.setCurrentIndex(curr_paper if curr_paper >= 0 else 4)
         self.combo_paper_size.blockSignals(False)
         
         # Custom Paper labels
@@ -1343,6 +1382,19 @@ class MainWindow(QMainWindow):
         finally:
             QApplication.restoreOverrideCursor()
 
+    def dragEnterEvent(self, event):
+        if event.mimeData().hasUrls():
+            event.acceptProposedAction()
+
+    def dropEvent(self, event):
+        if event.mimeData().hasUrls():
+            urls = event.mimeData().urls()
+            if urls:
+                file_path = urls[0].toLocalFile()
+                if file_path.lower().endswith(('.png', '.jpg', '.jpeg', '.pdf')):
+                    self.load_file(file_path)
+                    event.acceptProposedAction()
+
     def render_pdf_page(self):
         if not self.pdf_doc:
             return
@@ -1387,13 +1439,15 @@ class MainWindow(QMainWindow):
 
     def get_paper_size_mm(self):
         paper_idx = self.combo_paper_size.currentIndex()
-        if paper_idx == 2: # Custom size
+        if paper_idx == len(PRESET_PAPERS): # Custom size
             return self.spin_custom_w.value(), self.spin_custom_h.value()
             
-        is_a3 = paper_idx == 1
+        if 0 <= paper_idx < len(PRESET_PAPERS):
+            name, w, h = PRESET_PAPERS[paper_idx]
+        else:
+            w, h = 210, 297  # Fallback to A4
+            
         is_landscape = self.combo_orientation.currentIndex() == 1
-        
-        w, h = (297, 420) if is_a3 else (210, 297)
         if is_landscape:
             w, h = h, w
         return w, h
@@ -1409,8 +1463,18 @@ class MainWindow(QMainWindow):
     def on_grid_settings_changed(self):
         self.update_preview()
 
-    def on_page_scale_slider_changed(self):
-        val = self.slider_page_scale.value()
+    def on_slider_scale_changed(self, val):
+        self.spin_page_scale.blockSignals(True)
+        self.spin_page_scale.setValue(val)
+        self.spin_page_scale.blockSignals(False)
+        t = TRANSLATIONS[self.current_lang]
+        self.lbl_page_scale.setText(t["lbl_page_scale"].format(val=val))
+        self.update_preview()
+
+    def on_spin_scale_changed(self, val):
+        self.slider_page_scale.blockSignals(True)
+        self.slider_page_scale.setValue(val)
+        self.slider_page_scale.blockSignals(False)
         t = TRANSLATIONS[self.current_lang]
         self.lbl_page_scale.setText(t["lbl_page_scale"].format(val=val))
         self.update_preview()
@@ -1513,8 +1577,11 @@ class MainWindow(QMainWindow):
         slider_val = max(10, min(slider_val, 300))
         
         self.slider_page_scale.blockSignals(True)
+        self.spin_page_scale.blockSignals(True)
         self.slider_page_scale.setValue(slider_val)
+        self.spin_page_scale.setValue(slider_val)
         self.slider_page_scale.blockSignals(False)
+        self.spin_page_scale.blockSignals(False)
         
         t = TRANSLATIONS[self.current_lang]
         self.lbl_page_scale.setText(t["lbl_page_scale"].format(val=slider_val))
@@ -1689,6 +1756,7 @@ class MainWindow(QMainWindow):
         if self.pil_image is None:
             return
         self.view.fitInView(self.scene.sceneRect(), Qt.AspectRatioMode.KeepAspectRatio)
+        self.update_zoom_label(self.view.transform().m11())
 
     def zoom_fit_width(self):
         if self.pil_image is None:
@@ -1698,8 +1766,55 @@ class MainWindow(QMainWindow):
         if view_w <= 0:
             return
         scale_factor = view_w / rect.width()
-        
         self.view.setTransform(QTransform().scale(scale_factor, scale_factor))
+        self.update_zoom_label(scale_factor)
+
+    def zoom_in(self):
+        if self.pil_image is None:
+            return
+        current_scale = self.view.transform().m11()
+        if current_scale * 1.2 < 100.0:
+            self.view.scale(1.2, 1.2)
+            self.update_zoom_label(self.view.transform().m11())
+
+    def zoom_out(self):
+        if self.pil_image is None:
+            return
+        current_scale = self.view.transform().m11()
+        if current_scale / 1.2 > 0.001:
+            self.view.scale(1.0 / 1.2, 1.0 / 1.2)
+            self.update_zoom_label(self.view.transform().m11())
+
+    def update_zoom_icons(self):
+        is_light = self.current_theme == "light"
+        icon_color = QColor("#1d1d1f") if is_light else QColor("#ffffff")
+        
+        # Zoom In
+        pixmap_in = QPixmap(32, 32)
+        pixmap_in.fill(Qt.GlobalColor.transparent)
+        painter_in = QPainter(pixmap_in)
+        painter_in.setRenderHint(QPainter.RenderHint.Antialiasing)
+        pen_in = QPen(icon_color, 3, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap)
+        painter_in.setPen(pen_in)
+        painter_in.drawLine(8, 16, 24, 16)
+        painter_in.drawLine(16, 8, 16, 24)
+        painter_in.end()
+        self.btn_zoom_in.setIcon(QIcon(pixmap_in))
+        self.btn_zoom_in.setIconSize(QSize(16, 16))
+        self.btn_zoom_in.setText("")
+        
+        # Zoom Out
+        pixmap_out = QPixmap(32, 32)
+        pixmap_out.fill(Qt.GlobalColor.transparent)
+        painter_out = QPainter(pixmap_out)
+        painter_out.setRenderHint(QPainter.RenderHint.Antialiasing)
+        pen_out = QPen(icon_color, 3, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap)
+        painter_out.setPen(pen_out)
+        painter_out.drawLine(8, 16, 24, 16)
+        painter_out.end()
+        self.btn_zoom_out.setIcon(QIcon(pixmap_out))
+        self.btn_zoom_out.setIconSize(QSize(16, 16))
+        self.btn_zoom_out.setText("")
 
     def export_to_pdf(self):
         if self.pil_image is None:

@@ -10,6 +10,7 @@ class DraggablePageItem(QGraphicsRectItem):
     """
     A draggable rectangle representing a single printed page on the image canvas.
     Movement is constrained based on grid locking (lock horizontal or lock vertical).
+    Supports aspect-ratio-locked resizing by dragging edges/corners.
     """
     def __init__(self, rect, row_idx, col_idx, page_num, parent=None):
         super().__init__(rect, parent)
@@ -24,6 +25,13 @@ class DraggablePageItem(QGraphicsRectItem):
         self.fixed_y = rect.y()
         self.boundary_rect = None  # QRectF of the image bounds
         self.on_changed_callback = None
+        
+        # Resize state
+        self.resize_mode = 0  # 0=None, 1=TL, 2=TR, 3=BL, 4=BR, 5=L, 6=R, 7=T, 8=B
+        self.is_resizing = False
+        self.initial_rect = None
+        self.initial_pos = None
+        self.press_scene_pos = None
         
         # Configure flags for interaction
         self.setFlags(
@@ -57,6 +65,10 @@ class DraggablePageItem(QGraphicsRectItem):
 
     def itemChange(self, change, value):
         if change == QGraphicsItem.GraphicsItemChange.ItemPositionChange and self.scene():
+            if getattr(self, "is_resizing", False):
+                # Bypass locked grid alignment during active resize dragging
+                return value
+                
             new_pos = value  # QPointF
             
             # Target coordinates in item's parent space
@@ -92,6 +104,192 @@ class DraggablePageItem(QGraphicsRectItem):
         if not self.isSelected():
             self.setBrush(QBrush(self.normal_color))
         super().hoverLeaveEvent(event)
+
+    def hoverMoveEvent(self, event):
+        if self.isSelected():
+            pos = event.pos()
+            w = self.rect().width()
+            h = self.rect().height()
+            border = 8.0
+            
+            on_left = pos.x() < border
+            on_right = pos.x() > w - border
+            on_top = pos.y() < border
+            on_bottom = pos.y() > h - border
+            
+            if on_left and on_top:
+                self.setCursor(QCursor(Qt.CursorShape.SizeFDiagCursor))
+            elif on_right and on_bottom:
+                self.setCursor(QCursor(Qt.CursorShape.SizeFDiagCursor))
+            elif on_right and on_top:
+                self.setCursor(QCursor(Qt.CursorShape.SizeBDiagCursor))
+            elif on_left and on_bottom:
+                self.setCursor(QCursor(Qt.CursorShape.SizeBDiagCursor))
+            elif on_left or on_right:
+                self.setCursor(QCursor(Qt.CursorShape.SizeHorCursor))
+            elif on_top or on_bottom:
+                self.setCursor(QCursor(Qt.CursorShape.SizeVerCursor))
+            else:
+                self.setCursor(QCursor(Qt.CursorShape.SizeAllCursor))
+        else:
+            self.setCursor(QCursor(Qt.CursorShape.SizeAllCursor))
+        super().hoverMoveEvent(event)
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton and self.isSelected():
+            pos = event.pos()
+            w = self.rect().width()
+            h = self.rect().height()
+            border = 8.0
+            
+            on_left = pos.x() < border
+            on_right = pos.x() > w - border
+            on_top = pos.y() < border
+            on_bottom = pos.y() > h - border
+            
+            self.resize_mode = 0
+            if on_left and on_top:
+                self.resize_mode = 1
+            elif on_right and on_top:
+                self.resize_mode = 2
+            elif on_left and on_bottom:
+                self.resize_mode = 3
+            elif on_right and on_bottom:
+                self.resize_mode = 4
+            elif on_left:
+                self.resize_mode = 5
+            elif on_right:
+                self.resize_mode = 6
+            elif on_top:
+                self.resize_mode = 7
+            elif on_bottom:
+                self.resize_mode = 8
+                
+            if self.resize_mode > 0:
+                self.is_resizing = True
+                self.initial_rect = self.rect()
+                self.initial_pos = self.pos()
+                self.press_scene_pos = event.scenePos()
+                event.accept()
+                return
+                
+        super().mousePressEvent(event)
+
+    def mouseMoveEvent(self, event):
+        if getattr(self, "is_resizing", False) and self.resize_mode > 0:
+            curr_scene_pos = event.scenePos()
+            dx = curr_scene_pos.x() - self.press_scene_pos.x()
+            dy = curr_scene_pos.y() - self.press_scene_pos.y()
+            
+            W = self.initial_rect.width()
+            H = self.initial_rect.height()
+            X = self.initial_pos.x()
+            Y = self.initial_pos.y()
+            
+            ratio = H / W
+            
+            # Default values
+            w_new = W
+            h_new = H
+            x_new = X
+            y_new = Y
+            
+            mode = self.resize_mode
+            
+            # Calculate new size maintaining aspect ratio
+            if mode == 6:  # Right
+                w_new = max(20.0, W + dx)
+                h_new = w_new * ratio
+            elif mode == 8:  # Bottom
+                h_new = max(20.0, H + dy)
+                w_new = h_new / ratio
+            elif mode == 4:  # Bottom-Right
+                scale = max(0.1, ((W + dx) / W + (H + dy) / H) / 2.0)
+                w_new = W * scale
+                h_new = H * scale
+            elif mode == 5:  # Left
+                w_new = max(20.0, W - dx)
+                h_new = w_new * ratio
+                x_new = X + (W - w_new)
+                y_new = Y + (H - h_new)
+            elif mode == 7:  # Top
+                h_new = max(20.0, H - dy)
+                w_new = h_new / ratio
+                x_new = X + (W - w_new)
+                y_new = Y + (H - h_new)
+            elif mode == 1:  # Top-Left
+                scale = max(0.1, ((W - dx) / W + (H - dy) / H) / 2.0)
+                w_new = W * scale
+                h_new = H * scale
+                x_new = X + (W - w_new)
+                y_new = Y + (H - h_new)
+            elif mode == 2:  # Top-Right
+                scale = max(0.1, ((W + dx) / W + (H - dy) / H) / 2.0)
+                w_new = W * scale
+                h_new = H * scale
+                y_new = Y + (H - h_new)
+            elif mode == 3:  # Bottom-Left
+                scale = max(0.1, ((W - dx) / W + (H + dy) / H) / 2.0)
+                w_new = W * scale
+                h_new = H * scale
+                x_new = X + (W - w_new)
+                
+            # Boundary Clamping
+            if self.boundary_rect:
+                bx = self.boundary_rect.x()
+                by = self.boundary_rect.y()
+                bw = self.boundary_rect.width()
+                bh = self.boundary_rect.height()
+                
+                # Check limits depending on fixed points
+                if x_new < bx:
+                    if mode in [1, 3, 5, 7]:  # right side is fixed
+                        max_w = (X + W) - bx
+                        w_new = min(w_new, max_w)
+                        h_new = w_new * ratio
+                        x_new = (X + W) - w_new
+                        if mode in [1, 5, 7]:
+                            y_new = (Y + H) - h_new
+                    else:
+                        x_new = bx
+                        
+                if y_new < by:
+                    if mode in [1, 2, 5, 7]:  # bottom side is fixed
+                        max_h = (Y + H) - by
+                        h_new = min(h_new, max_h)
+                        w_new = h_new / ratio
+                        y_new = (Y + H) - h_new
+                        if mode in [1, 5, 7]:
+                            x_new = (X + W) - w_new
+                    else:
+                        y_new = by
+                        
+                if x_new + w_new > bx + bw:
+                    w_new = bx + bw - x_new
+                    h_new = w_new * ratio
+                    
+                if y_new + h_new > by + bh:
+                    h_new = by + bh - y_new
+                    w_new = h_new / ratio
+            
+            # Apply changes
+            self.setPos(x_new, y_new)
+            self.setRect(QRectF(0, 0, w_new, h_new))
+            
+            if self.on_changed_callback:
+                self.on_changed_callback(self, QPointF(x_new, y_new))
+            event.accept()
+        else:
+            super().mouseMoveEvent(event)
+
+    def mouseReleaseEvent(self, event):
+        if getattr(self, "is_resizing", False):
+            self.is_resizing = False
+            self.resize_mode = 0
+            self.setCursor(QCursor(Qt.CursorShape.SizeAllCursor))
+            event.accept()
+        else:
+            super().mouseReleaseEvent(event)
 
     def paint(self, painter, option, widget):
         # Draw the standard rectangle (brush and pen)
