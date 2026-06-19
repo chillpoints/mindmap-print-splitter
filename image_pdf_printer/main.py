@@ -78,6 +78,17 @@ TRANSLATIONS = {
         "msg_export_failed_title": "导出失败",
         "fit_all": "适应全部",
         "fit_width": "适应宽度",
+        "lbl_export_format": "导出格式:",
+        "export_format_pdf": "PDF 文档 (*.pdf)",
+        "export_format_docx": "Word 文档 (*.docx)",
+        "export_format_pptx": "PowerPoint 幻灯片 (*.pptx)",
+        "btn_export_pdf": "导出 PDF",
+        "btn_export_docx": "导出 Word",
+        "btn_export_pptx": "导出 PPT",
+        "msg_export_success_docx": "成功生成了 {pages} 页 of Word 文件：\n{path}",
+        "msg_export_success_pptx": "成功生成了 {pages} 页 of PPT 文件：\n{path}",
+        "status_exported_docx": "成功导出 Word 至 {name}",
+        "status_exported_pptx": "成功导出 PPT 至 {name}",
     },
     "en": {
         "menu_settings": "Settings",
@@ -137,6 +148,17 @@ TRANSLATIONS = {
         "msg_export_failed_title": "Export Failed",
         "fit_all": "Fit All",
         "fit_width": "Fit Width",
+        "lbl_export_format": "Export Format:",
+        "export_format_pdf": "PDF Document (*.pdf)",
+        "export_format_docx": "Word Document (*.docx)",
+        "export_format_pptx": "PowerPoint Presentation (*.pptx)",
+        "btn_export_pdf": "Generate PDF",
+        "btn_export_docx": "Generate Word",
+        "btn_export_pptx": "Generate PowerPoint",
+        "msg_export_success_docx": "Successfully generated Word file with {pages} pages:\n{path}",
+        "msg_export_success_pptx": "Successfully generated PowerPoint file with {pages} pages:\n{path}",
+        "status_exported_docx": "Exported successfully to {name}",
+        "status_exported_pptx": "Exported successfully to {name}",
     },
     "ja": {
         "menu_settings": "設定",
@@ -196,6 +218,17 @@ TRANSLATIONS = {
         "msg_export_failed_title": "エクスポート失敗",
         "fit_all": "全体表示",
         "fit_width": "幅に合わせる",
+        "lbl_export_format": "出力形式:",
+        "export_format_pdf": "PDF ドキュメント (*.pdf)",
+        "export_format_docx": "Word 文档 (*.docx)",
+        "export_format_pptx": "PowerPoint プレゼンテーション (*.pptx)",
+        "btn_export_pdf": "PDF を出力",
+        "btn_export_docx": "Word を出力",
+        "btn_export_pptx": "PowerPoint を出力",
+        "msg_export_success_docx": "{pages} ページのWordファイルが正常に生成されました:\n{path}",
+        "msg_export_success_pptx": "{pages} ページのPowerPointファイルが正常に生成されました:\n{path}",
+        "status_exported_docx": "{name} にエクスポートされました。",
+        "status_exported_pptx": "{name} にエクスポートされました。",
     },
     "fr": {
         "menu_settings": "Paramètres",
@@ -255,6 +288,17 @@ TRANSLATIONS = {
         "msg_export_failed_title": "Échec de l'exportation",
         "fit_all": "Ajuster Tout",
         "fit_width": "Ajuster Largeur",
+        "lbl_export_format": "Format d'exportation:",
+        "export_format_pdf": "Document PDF (*.pdf)",
+        "export_format_docx": "Document Word (*.docx)",
+        "export_format_pptx": "Présentation PowerPoint (*.pptx)",
+        "btn_export_pdf": "Générer PDF",
+        "btn_export_docx": "Générer Word",
+        "btn_export_pptx": "Générer PowerPoint",
+        "msg_export_success_docx": "Fichier Word généré avec succès ({pages} pages) :\n{path}",
+        "msg_export_success_pptx": "Présentation PowerPoint générée avec succès ({pages} pages) :\n{path}",
+        "status_exported_docx": "Exporté avec succès vers {name}",
+        "status_exported_pptx": "Exporté avec succès vers {name}",
     },
     "ru": {
         "menu_settings": "Настройки",
@@ -314,6 +358,17 @@ TRANSLATIONS = {
         "msg_export_failed_title": "Ошибка экспорта",
         "fit_all": "Показать все",
         "fit_width": "По ширине",
+        "lbl_export_format": "Формат экспорта:",
+        "export_format_pdf": "Документ PDF (*.pdf)",
+        "export_format_docx": "Документ Word (*.docx)",
+        "export_format_pptx": "Презентация PowerPoint (*.pptx)",
+        "btn_export_pdf": "Создать PDF",
+        "btn_export_docx": "Создать Word",
+        "btn_export_pptx": "Создать PowerPoint",
+        "msg_export_success_docx": "Успешно создан Word-файл из {pages} страниц:\n{path}",
+        "msg_export_success_pptx": "Успешно создан PowerPoint-файл из {pages} страниц:\n{path}",
+        "status_exported_docx": "Успешный экспорт в {name}",
+        "status_exported_pptx": "Успешный экспорт в {name}",
     },
     "ar": {
         "menu_settings": "الإعدادات",
@@ -373,6 +428,17 @@ TRANSLATIONS = {
         "msg_export_failed_title": "فشل التصدير",
         "fit_all": "ملاءمة الكل",
         "fit_width": "ملاءمة العرض",
+        "lbl_export_format": "صيغة التصدير:",
+        "export_format_pdf": "ملف PDF (*.pdf)",
+        "export_format_docx": "ملف Word (*.docx)",
+        "export_format_pptx": "عرض تقديمي PowerPoint (*.pptx)",
+        "btn_export_pdf": "تصدير PDF",
+        "btn_export_docx": "تصدير Word",
+        "btn_export_pptx": "تصدير PPT",
+        "msg_export_success_docx": "تم إنشاء ملف Word بنجاح بعدد صفحات {pages}:\n{path}",
+        "msg_export_success_pptx": "تم إنشاء ملف PowerPoint بنجاح بعدد صفحات {pages}:\n{path}",
+        "status_exported_docx": "تم التصدير بنجاح إلى {name}",
+        "status_exported_pptx": "تم التصدير بنجاح إلى {name}",
     }
 }
 
@@ -393,33 +459,34 @@ THEMES = {
     "dark": """
         QMainWindow { background-color: #121212; }
         QWidget { color: #e0e0e0; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
-        QGroupBox { border: 1px solid #2d2d2d; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #ffffff; }
-        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
-        QPushButton { background-color: #007aff; color: white; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QGroupBox { border: 1px solid #2d2d2d; border-radius: 16px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #ffffff; background-color: #1a1a1a; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 15px; padding: 0 5px; }
+        QPushButton { background-color: #007aff; color: white; border: none; border-radius: 10px; padding: 8px 15px; font-weight: bold; }
         QPushButton:hover { background-color: #0062cc; }
         QPushButton:pressed { background-color: #004ea6; }
         QPushButton#reset_btn { background-color: #2d2d2d; color: #e0e0e0; border: 1px solid #3c3c3c; }
         QPushButton#reset_btn:hover { background-color: #3d3d3d; }
-        QPushButton#zoom_btn { background-color: #2d2d2d; color: #ffffff; border: 1px solid #3c3c3c; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn { background-color: #2d2d2d; color: #ffffff; border: 1px solid #3c3c3c; border-radius: 10px; font-weight: bold; }
         QPushButton#zoom_btn:hover { background-color: #3d3d3d; }
-        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #1e1e1e; border: 1px solid #3c3c3c; border-radius: 5px; padding: 5px; color: #ffffff; }
+        QPushButton#autofit_btn { background-color: #2d2d2d; color: #007aff; border: 1px solid #007aff; border-radius: 10px; }
+        QPushButton#autofit_btn:hover { background-color: #3d3d3d; }
+        QPushButton#optimize_seams_btn { background-color: #2d2d2d; color: #38bdf8; border: 1px solid #38bdf8; border-radius: 10px; }
+        QPushButton#optimize_seams_btn:hover { background-color: #3d3d3d; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #252525; border: 1px solid #3c3c3c; border-radius: 10px; padding: 5px; color: #ffffff; }
         QComboBox::drop-down { border: none; }
         QSlider::groove:horizontal { border: 1px solid #3c3c3c; height: 6px; background: #1e1e1e; border-radius: 3px; }
         QSlider::handle:horizontal { background: #007aff; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
         QSlider::handle:horizontal:hover { background: #0062cc; }
         QStatusBar { background-color: #1a1a1a; color: #888888; }
-        
-        /* Menu and Dialog Custom Styling */
         QMenuBar { background-color: #121212; color: #e0e0e0; border-bottom: 1px solid #2d2d2d; }
-        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 8px; }
         QMenuBar::item:selected { background-color: #2d2d2d; color: #ffffff; }
-        QMenu { background-color: #1e1e1e; color: #e0e0e0; border: 1px solid #2d2d2d; border-radius: 6px; padding: 5px; }
-        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu { background-color: #1e1e1e; color: #e0e0e0; border: 1px solid #2d2d2d; border-radius: 12px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 8px; }
         QMenu::item:selected { background-color: #007aff; color: white; }
         QDialog { background-color: #121212; }
-        QTextEdit { background-color: #1e1e1e; color: #ffffff; border: 1px solid #3c3c3c; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
-        
-        /* Scrollbar Styling */
+        QTextEdit { background-color: #1e1e1e; color: #ffffff; border: 1px solid #3c3c3c; border-radius: 10px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        QFrame#mode_a_panel, QFrame#mode_b_panel { border: 1px solid #2d2d2d; border-radius: 12px; background-color: #222222; padding: 5px; }
         QScrollBar:vertical { border: none; background: #121212; width: 10px; margin: 0px; }
         QScrollBar::handle:vertical { background: #2d2d2d; min-height: 20px; border-radius: 5px; }
         QScrollBar::handle:vertical:hover { background: #3d3d3d; }
@@ -432,33 +499,34 @@ THEMES = {
     "light": """
         QMainWindow { background-color: #f5f5f7; }
         QWidget { color: #1d1d1f; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
-        QGroupBox { border: 1px solid #d2d2d7; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #1d1d1f; }
-        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
-        QPushButton { background-color: #007aff; color: white; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QGroupBox { border: 1px solid #d2d2d7; border-radius: 16px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #1d1d1f; background-color: #ffffff; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 15px; padding: 0 5px; }
+        QPushButton { background-color: #007aff; color: white; border: none; border-radius: 10px; padding: 8px 15px; font-weight: bold; }
         QPushButton:hover { background-color: #0062cc; }
         QPushButton:pressed { background-color: #004ea6; }
         QPushButton#reset_btn { background-color: #e8e8ed; color: #1d1d1f; border: 1px solid #d2d2d7; }
         QPushButton#reset_btn:hover { background-color: #d2d2d7; }
-        QPushButton#zoom_btn { background-color: #e8e8ed; color: #1d1d1f; border: 1px solid #d2d2d7; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn { background-color: #e8e8ed; color: #1d1d1f; border: 1px solid #d2d2d7; border-radius: 10px; font-weight: bold; }
         QPushButton#zoom_btn:hover { background-color: #d2d2d7; }
-        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #ffffff; border: 1px solid #d2d2d7; border-radius: 5px; padding: 5px; color: #1d1d1f; }
+        QPushButton#autofit_btn { background-color: #e8e8ed; color: #007aff; border: 1px solid #007aff; border-radius: 10px; }
+        QPushButton#autofit_btn:hover { background-color: #d2d2d7; }
+        QPushButton#optimize_seams_btn { background-color: #e8e8ed; color: #0ea5e9; border: 1px solid #0ea5e9; border-radius: 10px; }
+        QPushButton#optimize_seams_btn:hover { background-color: #d2d2d7; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #f5f5f7; border: 1px solid #d2d2d7; border-radius: 10px; padding: 5px; color: #1d1d1f; }
         QComboBox::drop-down { border: none; }
         QSlider::groove:horizontal { border: 1px solid #d2d2d7; height: 6px; background: #e8e8ed; border-radius: 3px; }
         QSlider::handle:horizontal { background: #007aff; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
         QSlider::handle:horizontal:hover { background: #0062cc; }
         QStatusBar { background-color: #e8e8ed; color: #86868b; }
-        
-        /* Menu and Dialog Custom Styling */
         QMenuBar { background-color: #f5f5f7; color: #1d1d1f; border-bottom: 1px solid #d2d2d7; }
-        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 8px; }
         QMenuBar::item:selected { background-color: #e8e8ed; color: #1d1d1f; }
-        QMenu { background-color: #ffffff; color: #1d1d1f; border: 1px solid #d2d2d7; border-radius: 6px; padding: 5px; }
-        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu { background-color: #ffffff; color: #1d1d1f; border: 1px solid #d2d2d7; border-radius: 12px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 8px; }
         QMenu::item:selected { background-color: #007aff; color: white; }
         QDialog { background-color: #f5f5f7; }
-        QTextEdit { background-color: #ffffff; color: #1d1d1f; border: 1px solid #d2d2d7; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
-        
-        /* Scrollbar Styling */
+        QTextEdit { background-color: #ffffff; color: #1d1d1f; border: 1px solid #d2d2d7; border-radius: 10px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        QFrame#mode_a_panel, QFrame#mode_b_panel { border: 1px solid #d2d2d7; border-radius: 12px; background-color: #fafafa; padding: 5px; }
         QScrollBar:vertical { border: none; background: #f5f5f7; width: 10px; margin: 0px; }
         QScrollBar::handle:vertical { background: #d2d2d7; min-height: 20px; border-radius: 5px; }
         QScrollBar::handle:vertical:hover { background: #b8b8bf; }
@@ -471,33 +539,34 @@ THEMES = {
     "nordic": """
         QMainWindow { background-color: #0f172a; }
         QWidget { color: #f1f5f9; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
-        QGroupBox { border: 1px solid #334155; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #f8fafc; }
-        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
-        QPushButton { background-color: #38bdf8; color: #0f172a; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QGroupBox { border: 1px solid #334155; border-radius: 16px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #f8fafc; background-color: #1e293b; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 15px; padding: 0 5px; }
+        QPushButton { background-color: #38bdf8; color: #0f172a; border: none; border-radius: 10px; padding: 8px 15px; font-weight: bold; }
         QPushButton:hover { background-color: #0ea5e9; }
         QPushButton:pressed { background-color: #0284c7; }
         QPushButton#reset_btn { background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155; }
         QPushButton#reset_btn:hover { background-color: #334155; }
-        QPushButton#zoom_btn { background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn { background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155; border-radius: 10px; font-weight: bold; }
         QPushButton#zoom_btn:hover { background-color: #334155; }
-        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #1e293b; border: 1px solid #334155; border-radius: 5px; padding: 5px; color: #f1f5f9; }
+        QPushButton#autofit_btn { background-color: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; border-radius: 10px; }
+        QPushButton#autofit_btn:hover { background-color: #334155; }
+        QPushButton#optimize_seams_btn { background-color: #1e293b; color: #0ea5e9; border: 1px solid #0ea5e9; border-radius: 10px; }
+        QPushButton#optimize_seams_btn:hover { background-color: #334155; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 5px; color: #f1f5f9; }
         QComboBox::drop-down { border: none; }
         QSlider::groove:horizontal { border: 1px solid #334155; height: 6px; background: #1e293b; border-radius: 3px; }
         QSlider::handle:horizontal { background: #38bdf8; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
         QSlider::handle:horizontal:hover { background: #0ea5e9; }
         QStatusBar { background-color: #1e293b; color: #94a3b8; }
-        
-        /* Menu and Dialog Custom Styling */
         QMenuBar { background-color: #0f172a; color: #f1f5f9; border-bottom: 1px solid #334155; }
-        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 8px; }
         QMenuBar::item:selected { background-color: #1e293b; color: #f8fafc; }
-        QMenu { background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155; border-radius: 6px; padding: 5px; }
-        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu { background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155; border-radius: 12px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 8px; }
         QMenu::item:selected { background-color: #38bdf8; color: #0f172a; }
         QDialog { background-color: #0f172a; }
-        QTextEdit { background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
-        
-        /* Scrollbar Styling */
+        QTextEdit { background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155; border-radius: 10px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        QFrame#mode_a_panel, QFrame#mode_b_panel { border: 1px solid #334155; border-radius: 12px; background-color: #1e293b; padding: 5px; }
         QScrollBar:vertical { border: none; background: #0f172a; width: 10px; margin: 0px; }
         QScrollBar::handle:vertical { background: #1e293b; min-height: 20px; border-radius: 5px; }
         QScrollBar::handle:vertical:hover { background: #334155; }
@@ -510,33 +579,34 @@ THEMES = {
     "forest": """
         QMainWindow { background-color: #141b1a; }
         QWidget { color: #e6f4f1; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
-        QGroupBox { border: 1px solid #2d3d3a; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #ffffff; }
-        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
-        QPushButton { background-color: #059669; color: white; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QGroupBox { border: 1px solid #2d3d3a; border-radius: 16px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #ffffff; background-color: #1b2624; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 15px; padding: 0 5px; }
+        QPushButton { background-color: #059669; color: white; border: none; border-radius: 10px; padding: 8px 15px; font-weight: bold; }
         QPushButton:hover { background-color: #047857; }
         QPushButton:pressed { background-color: #065f46; }
         QPushButton#reset_btn { background-color: #1c2826; color: #e6f4f1; border: 1px solid #2d3d3a; }
         QPushButton#reset_btn:hover { background-color: #2d3d3a; }
-        QPushButton#zoom_btn { background-color: #1c2826; color: #e6f4f1; border: 1px solid #2d3d3a; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn { background-color: #1c2826; color: #e6f4f1; border: 1px solid #2d3d3a; border-radius: 10px; font-weight: bold; }
         QPushButton#zoom_btn:hover { background-color: #2d3d3a; }
-        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #1c2826; border: 1px solid #2d3d3a; border-radius: 5px; padding: 5px; color: #ffffff; }
+        QPushButton#autofit_btn { background-color: #1c2826; color: #10b981; border: 1px solid #10b981; border-radius: 10px; }
+        QPushButton#autofit_btn:hover { background-color: #2d3d3a; }
+        QPushButton#optimize_seams_btn { background-color: #1c2826; color: #34d399; border: 1px solid #34d399; border-radius: 10px; }
+        QPushButton#optimize_seams_btn:hover { background-color: #2d3d3a; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #1c2826; border: 1px solid #2d3d3a; border-radius: 10px; padding: 5px; color: #ffffff; }
         QComboBox::drop-down { border: none; }
         QSlider::groove:horizontal { border: 1px solid #2d3d3a; height: 6px; background: #1c2826; border-radius: 3px; }
         QSlider::handle:horizontal { background: #059669; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
         QSlider::handle:horizontal:hover { background: #047857; }
         QStatusBar { background-color: #1c2826; color: #809c96; }
-        
-        /* Menu and Dialog Custom Styling */
         QMenuBar { background-color: #141b1a; color: #e6f4f1; border-bottom: 1px solid #2d3d3a; }
-        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 8px; }
         QMenuBar::item:selected { background-color: #1c2826; color: #ffffff; }
-        QMenu { background-color: #1c2826; color: #e6f4f1; border: 1px solid #2d3d3a; border-radius: 6px; padding: 5px; }
-        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu { background-color: #1c2826; color: #e6f4f1; border: 1px solid #2d3d3a; border-radius: 12px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 8px; }
         QMenu::item:selected { background-color: #059669; color: white; }
         QDialog { background-color: #141b1a; }
-        QTextEdit { background-color: #1c2826; color: #ffffff; border: 1px solid #2d3d3a; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
-        
-        /* Scrollbar Styling */
+        QTextEdit { background-color: #1c2826; color: #ffffff; border: 1px solid #2d3d3a; border-radius: 10px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        QFrame#mode_a_panel, QFrame#mode_b_panel { border: 1px solid #2d3d3a; border-radius: 12px; background-color: #1b2624; padding: 5px; }
         QScrollBar:vertical { border: none; background: #141b1a; width: 10px; margin: 0px; }
         QScrollBar::handle:vertical { background: #1c2826; min-height: 20px; border-radius: 5px; }
         QScrollBar::handle:vertical:hover { background: #2d3d3a; }
@@ -549,33 +619,34 @@ THEMES = {
     "matrix": """
         QMainWindow { background-color: #000000; }
         QWidget { color: #ffb000; font-family: 'Courier New', 'Consolas', monospace; font-size: 13px; }
-        QGroupBox { border: 1px solid #ffb000; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #ffb000; }
-        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
-        QPushButton { background-color: #ffb000; color: #000000; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QGroupBox { border: 1px solid #ffb000; border-radius: 16px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #ffb000; background-color: #080808; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 15px; padding: 0 5px; }
+        QPushButton { background-color: #ffb000; color: #000000; border: none; border-radius: 10px; padding: 8px 15px; font-weight: bold; }
         QPushButton:hover { background-color: #e09b00; }
         QPushButton:pressed { background-color: #c28600; }
         QPushButton#reset_btn { background-color: #000000; color: #ffb000; border: 1px solid #ffb000; }
         QPushButton#reset_btn:hover { background-color: #1a1a1a; }
-        QPushButton#zoom_btn { background-color: #000000; color: #ffb000; border: 1px solid #ffb000; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn { background-color: #000000; color: #ffb000; border: 1px solid #ffb000; border-radius: 10px; font-weight: bold; }
         QPushButton#zoom_btn:hover { background-color: #1a1a1a; }
-        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #000000; border: 1px solid #ffb000; border-radius: 5px; padding: 5px; color: #ffb000; }
+        QPushButton#autofit_btn { background-color: #000000; color: #ffb000; border: 1px solid #ffb000; border-radius: 10px; }
+        QPushButton#autofit_btn:hover { background-color: #1a1a1a; }
+        QPushButton#optimize_seams_btn { background-color: #000000; color: #e09b00; border: 1px solid #e09b00; border-radius: 10px; }
+        QPushButton#optimize_seams_btn:hover { background-color: #1a1a1a; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #000000; border: 1px solid #ffb000; border-radius: 10px; padding: 5px; color: #ffb000; }
         QComboBox::drop-down { border: none; }
         QSlider::groove:horizontal { border: 1px solid #ffb000; height: 6px; background: #000000; border-radius: 3px; }
         QSlider::handle:horizontal { background: #ffb000; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
         QSlider::handle:horizontal:hover { background: #e09b00; }
         QStatusBar { background-color: #000000; color: #cc8d00; border-top: 1px solid #ffb000; }
-        
-        /* Menu and Dialog Custom Styling */
         QMenuBar { background-color: #000000; color: #ffb000; border-bottom: 1px solid #ffb000; }
-        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 8px; }
         QMenuBar::item:selected { background-color: #1a1a1a; color: #ffb000; }
-        QMenu { background-color: #000000; color: #ffb000; border: 1px solid #ffb000; border-radius: 6px; padding: 5px; }
-        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu { background-color: #000000; color: #ffb000; border: 1px solid #ffb000; border-radius: 12px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 8px; }
         QMenu::item:selected { background-color: #ffb000; color: #000000; }
         QDialog { background-color: #000000; }
-        QTextEdit { background-color: #000000; color: #ffb000; border: 1px solid #ffb000; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
-        
-        /* Scrollbar Styling */
+        QTextEdit { background-color: #000000; color: #ffb000; border: 1px solid #ffb000; border-radius: 10px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        QFrame#mode_a_panel, QFrame#mode_b_panel { border: 1px solid #ffb000; border-radius: 12px; background-color: #080808; padding: 5px; }
         QScrollBar:vertical { border: none; background: #000000; width: 10px; margin: 0px; }
         QScrollBar::handle:vertical { background: #1a1a1a; min-height: 20px; border-radius: 5px; border: 1px solid #ffb000; }
         QScrollBar::handle:vertical:hover { background: #2a2a2a; }
@@ -588,33 +659,34 @@ THEMES = {
     "warm_eye": """
         QMainWindow { background-color: #FFFDF5; }
         QWidget { color: #101010; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
-        QGroupBox { border: 1px solid #dcdad4; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #101010; }
-        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
-        QPushButton { background-color: #CB4B16; color: white; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QGroupBox { border: 1px solid #dcdad4; border-radius: 16px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #101010; background-color: #f6f3eb; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 15px; padding: 0 5px; }
+        QPushButton { background-color: #CB4B16; color: white; border: none; border-radius: 10px; padding: 8px 15px; font-weight: bold; }
         QPushButton:hover { background-color: #b33c0d; }
         QPushButton:pressed { background-color: #993007; }
         QPushButton#reset_btn { background-color: #f0ede4; color: #101010; border: 1px solid #dcdad4; }
         QPushButton#reset_btn:hover { background-color: #e3decb; }
-        QPushButton#zoom_btn { background-color: #f0ede4; color: #101010; border: 1px solid #dcdad4; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn { background-color: #f0ede4; color: #101010; border: 1px solid #dcdad4; border-radius: 10px; font-weight: bold; }
         QPushButton#zoom_btn:hover { background-color: #e3decb; }
-        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #ffffff; border: 1px solid #dcdad4; border-radius: 5px; padding: 5px; color: #101010; }
+        QPushButton#autofit_btn { background-color: #f0ede4; color: #CB4B16; border: 1px solid #CB4B16; border-radius: 10px; }
+        QPushButton#autofit_btn:hover { background-color: #e3decb; }
+        QPushButton#optimize_seams_btn { background-color: #f0ede4; color: #d0531b; border: 1px solid #d0531b; border-radius: 10px; }
+        QPushButton#optimize_seams_btn:hover { background-color: #e3decb; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #ffffff; border: 1px solid #dcdad4; border-radius: 10px; padding: 5px; color: #101010; }
         QComboBox::drop-down { border: none; }
         QSlider::groove:horizontal { border: 1px solid #dcdad4; height: 6px; background: #f0ede4; border-radius: 3px; }
         QSlider::handle:horizontal { background: #CB4B16; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
         QSlider::handle:horizontal:hover { background: #b33c0d; }
         QStatusBar { background-color: #f0ede4; color: #5c5a54; }
-        
-        /* Menu and Dialog Custom Styling */
         QMenuBar { background-color: #FFFDF5; color: #101010; border-bottom: 1px solid #dcdad4; }
-        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 8px; }
         QMenuBar::item:selected { background-color: #f0ede4; color: #101010; }
-        QMenu { background-color: #ffffff; color: #101010; border: 1px solid #dcdad4; border-radius: 6px; padding: 5px; }
-        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu { background-color: #ffffff; color: #101010; border: 1px solid #dcdad4; border-radius: 12px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 8px; }
         QMenu::item:selected { background-color: #CB4B16; color: white; }
         QDialog { background-color: #FFFDF5; }
-        QTextEdit { background-color: #ffffff; color: #101010; border: 1px solid #dcdad4; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
-        
-        /* Scrollbar Styling */
+        QTextEdit { background-color: #ffffff; color: #101010; border: 1px solid #dcdad4; border-radius: 10px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        QFrame#mode_a_panel, QFrame#mode_b_panel { border: 1px solid #dcdad4; border-radius: 12px; background-color: #FFFDF5; padding: 5px; }
         QScrollBar:vertical { border: none; background: #FFFDF5; width: 10px; margin: 0px; }
         QScrollBar::handle:vertical { background: #dcdad4; min-height: 20px; border-radius: 5px; }
         QScrollBar::handle:vertical:hover { background: #cbbaa5; }
@@ -627,33 +699,34 @@ THEMES = {
     "cyberpunk": """
         QMainWindow { background-color: #0c0f12; }
         QWidget { color: #00f0ff; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
-        QGroupBox { border: 1px solid #ff007f; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #ff007f; }
-        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
-        QPushButton { background-color: #ff007f; color: #000000; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QGroupBox { border: 1px solid #ff007f; border-radius: 16px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #ff007f; background-color: #121820; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 15px; padding: 0 5px; }
+        QPushButton { background-color: #ff007f; color: #000000; border: none; border-radius: 10px; padding: 8px 15px; font-weight: bold; }
         QPushButton:hover { background-color: #ff3399; }
         QPushButton:pressed { background-color: #cc0066; }
         QPushButton#reset_btn { background-color: #121820; color: #00f0ff; border: 1px solid #00f0ff; }
         QPushButton#reset_btn:hover { background-color: #1a2530; }
-        QPushButton#zoom_btn { background-color: #121820; color: #00f0ff; border: 1px solid #00f0ff; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn { background-color: #121820; color: #00f0ff; border: 1px solid #00f0ff; border-radius: 10px; font-weight: bold; }
         QPushButton#zoom_btn:hover { background-color: #1a2530; }
-        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #121820; border: 1px solid #00f0ff; border-radius: 5px; padding: 5px; color: #00f0ff; }
+        QPushButton#autofit_btn { background-color: #121820; color: #ff007f; border: 1px solid #ff007f; border-radius: 10px; }
+        QPushButton#autofit_btn:hover { background-color: #1a2530; }
+        QPushButton#optimize_seams_btn { background-color: #121820; color: #00f0ff; border: 1px solid #00f0ff; border-radius: 10px; }
+        QPushButton#optimize_seams_btn:hover { background-color: #1a2530; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #121820; border: 1px solid #00f0ff; border-radius: 10px; padding: 5px; color: #00f0ff; }
         QComboBox::drop-down { border: none; }
         QSlider::groove:horizontal { border: 1px solid #00f0ff; height: 6px; background: #121820; border-radius: 3px; }
         QSlider::handle:horizontal { background: #ff007f; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
         QSlider::handle:horizontal:hover { background: #ff3399; }
         QStatusBar { background-color: #121820; color: #00f0ff; }
-        
-        /* Menu and Dialog Custom Styling */
         QMenuBar { background-color: #0c0f12; color: #00f0ff; border-bottom: 1px solid #ff007f; }
-        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 8px; }
         QMenuBar::item:selected { background-color: #121820; color: #ff007f; }
-        QMenu { background-color: #121820; color: #00f0ff; border: 1px solid #ff007f; border-radius: 6px; padding: 5px; }
-        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu { background-color: #121820; color: #00f0ff; border: 1px solid #ff007f; border-radius: 12px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 8px; }
         QMenu::item:selected { background-color: #ff007f; color: #000000; }
         QDialog { background-color: #0c0f12; }
-        QTextEdit { background-color: #121820; color: #00f0ff; border: 1px solid #ff007f; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
-        
-        /* Scrollbar Styling */
+        QTextEdit { background-color: #121820; color: #00f0ff; border: 1px solid #ff007f; border-radius: 10px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        QFrame#mode_a_panel, QFrame#mode_b_panel { border: 1px solid #00f0ff; border-radius: 12px; background-color: #121820; padding: 5px; }
         QScrollBar:vertical { border: none; background: #0c0f12; width: 10px; margin: 0px; }
         QScrollBar::handle:vertical { background: #121820; min-height: 20px; border-radius: 5px; border: 1px solid #00f0ff; }
         QScrollBar::handle:vertical:hover { background: #1a2530; }
@@ -666,33 +739,34 @@ THEMES = {
     "dracula": """
         QMainWindow { background-color: #282a36; }
         QWidget { color: #f8f8f2; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
-        QGroupBox { border: 1px solid #44475a; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #bd93f9; }
-        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
-        QPushButton { background-color: #bd93f9; color: #282a36; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QGroupBox { border: 1px solid #44475a; border-radius: 16px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #bd93f9; background-color: #1e1f29; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 15px; padding: 0 5px; }
+        QPushButton { background-color: #bd93f9; color: #282a36; border: none; border-radius: 10px; padding: 8px 15px; font-weight: bold; }
         QPushButton:hover { background-color: #caa9fa; }
         QPushButton:pressed { background-color: #a879e6; }
         QPushButton#reset_btn { background-color: #44475a; color: #f8f8f2; border: 1px solid #6272a4; }
         QPushButton#reset_btn:hover { background-color: #6272a4; }
-        QPushButton#zoom_btn { background-color: #44475a; color: #f8f8f2; border: 1px solid #6272a4; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn { background-color: #44475a; color: #f8f8f2; border: 1px solid #6272a4; border-radius: 10px; font-weight: bold; }
         QPushButton#zoom_btn:hover { background-color: #6272a4; }
-        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #1d1f27; border: 1px solid #44475a; border-radius: 5px; padding: 5px; color: #f8f8f2; }
+        QPushButton#autofit_btn { background-color: #44475a; color: #bd93f9; border: 1px solid #bd93f9; border-radius: 10px; }
+        QPushButton#autofit_btn:hover { background-color: #6272a4; }
+        QPushButton#optimize_seams_btn { background-color: #44475a; color: #8be9fd; border: 1px solid #8be9fd; border-radius: 10px; }
+        QPushButton#optimize_seams_btn:hover { background-color: #6272a4; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #1d1f27; border: 1px solid #44475a; border-radius: 10px; padding: 5px; color: #f8f8f2; }
         QComboBox::drop-down { border: none; }
         QSlider::groove:horizontal { border: 1px solid #44475a; height: 6px; background: #1d1f27; border-radius: 3px; }
         QSlider::handle:horizontal { background: #bd93f9; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
         QSlider::handle:horizontal:hover { background: #caa9fa; }
         QStatusBar { background-color: #21222c; color: #6272a4; }
-        
-        /* Menu and Dialog Custom Styling */
         QMenuBar { background-color: #282a36; color: #f8f8f2; border-bottom: 1px solid #44475a; }
-        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 8px; }
         QMenuBar::item:selected { background-color: #44475a; color: #bd93f9; }
-        QMenu { background-color: #1d1f27; color: #f8f8f2; border: 1px solid #44475a; border-radius: 6px; padding: 5px; }
-        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu { background-color: #1d1f27; color: #f8f8f2; border: 1px solid #44475a; border-radius: 12px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 8px; }
         QMenu::item:selected { background-color: #bd93f9; color: #282a36; }
         QDialog { background-color: #282a36; }
-        QTextEdit { background-color: #1d1f27; color: #f8f8f2; border: 1px solid #44475a; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
-        
-        /* Scrollbar Styling */
+        QTextEdit { background-color: #1d1f27; color: #f8f8f2; border: 1px solid #44475a; border-radius: 10px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        QFrame#mode_a_panel, QFrame#mode_b_panel { border: 1px solid #44475a; border-radius: 12px; background-color: #1d1f27; padding: 5px; }
         QScrollBar:vertical { border: none; background: #282a36; width: 10px; margin: 0px; }
         QScrollBar::handle:vertical { background: #44475a; min-height: 20px; border-radius: 5px; }
         QScrollBar::handle:vertical:hover { background: #6272a4; }
@@ -705,33 +779,34 @@ THEMES = {
     "solarized_dark": """
         QMainWindow { background-color: #002b36; }
         QWidget { color: #839496; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
-        QGroupBox { border: 1px solid #073642; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #93a1a1; }
-        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
-        QPushButton { background-color: #2aa198; color: #002b36; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QGroupBox { border: 1px solid #073642; border-radius: 16px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #93a1a1; background-color: #00212b; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 15px; padding: 0 5px; }
+        QPushButton { background-color: #2aa198; color: #002b36; border: none; border-radius: 10px; padding: 8px 15px; font-weight: bold; }
         QPushButton:hover { background-color: #3bc4b9; }
         QPushButton:pressed { background-color: #208079; }
         QPushButton#reset_btn { background-color: #073642; color: #839496; border: 1px solid #586e75; }
         QPushButton#reset_btn:hover { background-color: #586e75; color: #fdf6e3; }
-        QPushButton#zoom_btn { background-color: #073642; color: #839496; border: 1px solid #586e75; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn { background-color: #073642; color: #839496; border: 1px solid #586e75; border-radius: 10px; font-weight: bold; }
         QPushButton#zoom_btn:hover { background-color: #586e75; color: #fdf6e3; }
-        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #00212b; border: 1px solid #073642; border-radius: 5px; padding: 5px; color: #93a1a1; }
+        QPushButton#autofit_btn { background-color: #073642; color: #2aa198; border: 1px solid #2aa198; border-radius: 10px; }
+        QPushButton#autofit_btn:hover { background-color: #586e75; }
+        QPushButton#optimize_seams_btn { background-color: #073642; color: #b58900; border: 1px solid #b58900; border-radius: 10px; }
+        QPushButton#optimize_seams_btn:hover { background-color: #586e75; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #00212b; border: 1px solid #073642; border-radius: 10px; padding: 5px; color: #93a1a1; }
         QComboBox::drop-down { border: none; }
         QSlider::groove:horizontal { border: 1px solid #073642; height: 6px; background: #00212b; border-radius: 3px; }
         QSlider::handle:horizontal { background: #2aa198; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
         QSlider::handle:horizontal:hover { background: #3bc4b9; }
         QStatusBar { background-color: #073642; color: #586e75; }
-        
-        /* Menu and Dialog Custom Styling */
         QMenuBar { background-color: #002b36; color: #839496; border-bottom: 1px solid #073642; }
-        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 8px; }
         QMenuBar::item:selected { background-color: #073642; color: #93a1a1; }
-        QMenu { background-color: #00212b; color: #839496; border: 1px solid #073642; border-radius: 6px; padding: 5px; }
-        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu { background-color: #00212b; color: #839496; border: 1px solid #073642; border-radius: 12px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 8px; }
         QMenu::item:selected { background-color: #2aa198; color: #002b36; }
         QDialog { background-color: #002b36; }
-        QTextEdit { background-color: #00212b; color: #93a1a1; border: 1px solid #073642; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
-        
-        /* Scrollbar Styling */
+        QTextEdit { background-color: #00212b; color: #93a1a1; border: 1px solid #073642; border-radius: 10px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        QFrame#mode_a_panel, QFrame#mode_b_panel { border: 1px solid #073642; border-radius: 12px; background-color: #00212b; padding: 5px; }
         QScrollBar:vertical { border: none; background: #002b36; width: 10px; margin: 0px; }
         QScrollBar::handle:vertical { background: #073642; min-height: 20px; border-radius: 5px; }
         QScrollBar::handle:vertical:hover { background: #586e75; }
@@ -744,33 +819,34 @@ THEMES = {
     "lavender": """
         QMainWindow { background-color: #f3f0f7; }
         QWidget { color: #4a3e56; font-family: 'Segoe UI', 'Outfit', sans-serif; font-size: 13px; }
-        QGroupBox { border: 1px solid #dcd5e4; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #4a3e56; }
-        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
-        QPushButton { background-color: #8a70a4; color: white; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QGroupBox { border: 1px solid #dcd5e4; border-radius: 16px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #4a3e56; background-color: #eae3f1; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 15px; padding: 0 5px; }
+        QPushButton { background-color: #8a70a4; color: white; border: none; border-radius: 10px; padding: 8px 15px; font-weight: bold; }
         QPushButton:hover { background-color: #9e87b7; }
         QPushButton:pressed { background-color: #72598c; }
         QPushButton#reset_btn { background-color: #eae3f1; color: #4a3e56; border: 1px solid #dcd5e4; }
         QPushButton#reset_btn:hover { background-color: #dcd5e4; }
-        QPushButton#zoom_btn { background-color: #eae3f1; color: #4a3e56; border: 1px solid #dcd5e4; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn { background-color: #eae3f1; color: #4a3e56; border: 1px solid #dcd5e4; border-radius: 10px; font-weight: bold; }
         QPushButton#zoom_btn:hover { background-color: #dcd5e4; }
-        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #ffffff; border: 1px solid #dcd5e4; border-radius: 5px; padding: 5px; color: #4a3e56; }
+        QPushButton#autofit_btn { background-color: #eae3f1; color: #8a70a4; border: 1px solid #8a70a4; border-radius: 10px; }
+        QPushButton#autofit_btn:hover { background-color: #dcd5e4; }
+        QPushButton#optimize_seams_btn { background-color: #eae3f1; color: #72598c; border: 1px solid #72598c; border-radius: 10px; }
+        QPushButton#optimize_seams_btn:hover { background-color: #dcd5e4; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #ffffff; border: 1px solid #dcd5e4; border-radius: 10px; padding: 5px; color: #4a3e56; }
         QComboBox::drop-down { border: none; }
         QSlider::groove:horizontal { border: 1px solid #dcd5e4; height: 6px; background: #eae3f1; border-radius: 3px; }
         QSlider::handle:horizontal { background: #8a70a4; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
         QSlider::handle:horizontal:hover { background: #9e87b7; }
         QStatusBar { background-color: #eae3f1; color: #7b6d88; }
-        
-        /* Menu and Dialog Custom Styling */
         QMenuBar { background-color: #f3f0f7; color: #4a3e56; border-bottom: 1px solid #dcd5e4; }
-        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 8px; }
         QMenuBar::item:selected { background-color: #eae3f1; color: #4a3e56; }
-        QMenu { background-color: #ffffff; color: #4a3e56; border: 1px solid #dcd5e4; border-radius: 6px; padding: 5px; }
-        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu { background-color: #ffffff; color: #4a3e56; border: 1px solid #dcd5e4; border-radius: 12px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 8px; }
         QMenu::item:selected { background-color: #8a70a4; color: white; }
         QDialog { background-color: #f3f0f7; }
-        QTextEdit { background-color: #ffffff; color: #4a3e56; border: 1px solid #dcd5e4; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
-        
-        /* Scrollbar Styling */
+        QTextEdit { background-color: #ffffff; color: #4a3e56; border: 1px solid #dcd5e4; border-radius: 10px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        QFrame#mode_a_panel, QFrame#mode_b_panel { border: 1px solid #dcd5e4; border-radius: 12px; background-color: #f3f0f7; padding: 5px; }
         QScrollBar:vertical { border: none; background: #f3f0f7; width: 10px; margin: 0px; }
         QScrollBar::handle:vertical { background: #dcd5e4; min-height: 20px; border-radius: 5px; }
         QScrollBar::handle:vertical:hover { background: #c5b9d3; }
@@ -783,33 +859,34 @@ THEMES = {
     "retro_terminal": """
         QMainWindow { background-color: #020a02; }
         QWidget { color: #39ff14; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
-        QGroupBox { border: 1px solid #39ff14; border-radius: 8px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #39ff14; }
-        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 10px; padding: 0 5px; }
-        QPushButton { background-color: #39ff14; color: #020a02; border: none; border-radius: 5px; padding: 8px 15px; font-weight: bold; }
+        QGroupBox { border: 1px solid #39ff14; border-radius: 16px; margin-top: 15px; padding-top: 15px; font-weight: bold; color: #39ff14; background-color: #051405; }
+        QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left: 15px; padding: 0 5px; }
+        QPushButton { background-color: #39ff14; color: #020a02; border: none; border-radius: 10px; padding: 8px 15px; font-weight: bold; }
         QPushButton:hover { background-color: #66ff66; }
         QPushButton:pressed { background-color: #00cc00; }
         QPushButton#reset_btn { background-color: #020a02; color: #39ff14; border: 1px solid #39ff14; }
         QPushButton#reset_btn:hover { background-color: #0a1f0a; }
-        QPushButton#zoom_btn { background-color: #020a02; color: #39ff14; border: 1px solid #39ff14; border-radius: 5px; font-weight: bold; }
+        QPushButton#zoom_btn { background-color: #020a02; color: #39ff14; border: 1px solid #39ff14; border-radius: 10px; font-weight: bold; }
         QPushButton#zoom_btn:hover { background-color: #0a1f0a; }
-        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #020a02; border: 1px solid #39ff14; border-radius: 5px; padding: 5px; color: #39ff14; }
+        QPushButton#autofit_btn { background-color: #020a02; color: #39ff14; border: 1px solid #39ff14; border-radius: 10px; }
+        QPushButton#autofit_btn:hover { background-color: #0a1f0a; }
+        QPushButton#optimize_seams_btn { background-color: #020a02; color: #20c00c; border: 1px solid #20c00c; border-radius: 10px; }
+        QPushButton#optimize_seams_btn:hover { background-color: #0a1f0a; }
+        QComboBox, QDoubleSpinBox, QSpinBox, QLineEdit { background-color: #020a02; border: 1px solid #39ff14; border-radius: 10px; padding: 5px; color: #39ff14; }
         QComboBox::drop-down { border: none; }
         QSlider::groove:horizontal { border: 1px solid #39ff14; height: 6px; background: #020a02; border-radius: 3px; }
         QSlider::handle:horizontal { background: #39ff14; width: 14px; margin-top: -4px; margin-bottom: -4px; border-radius: 7px; }
         QSlider::handle:horizontal:hover { background: #66ff66; }
         QStatusBar { background-color: #020a02; color: #39ff14; border-top: 1px solid #39ff14; }
-        
-        /* Menu and Dialog Custom Styling */
         QMenuBar { background-color: #020a02; color: #39ff14; border-bottom: 1px solid #39ff14; }
-        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 4px; }
+        QMenuBar::item { background: transparent; padding: 4px 10px; border-radius: 8px; }
         QMenuBar::item:selected { background-color: #0a1f0a; color: #39ff14; }
-        QMenu { background-color: #020a02; color: #39ff14; border: 1px solid #39ff14; border-radius: 6px; padding: 5px; }
-        QMenu::item { padding: 6px 20px; border-radius: 4px; }
+        QMenu { background-color: #020a02; color: #39ff14; border: 1px solid #39ff14; border-radius: 12px; padding: 5px; }
+        QMenu::item { padding: 6px 20px; border-radius: 8px; }
         QMenu::item:selected { background-color: #39ff14; color: #020a02; }
         QDialog { background-color: #020a02; }
-        QTextEdit { background-color: #020a02; color: #39ff14; border: 1px solid #39ff14; border-radius: 5px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
-        
-        /* Scrollbar Styling */
+        QTextEdit { background-color: #020a02; color: #39ff14; border: 1px solid #39ff14; border-radius: 10px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+        QFrame#mode_a_panel, QFrame#mode_b_panel { border: 1px solid #39ff14; border-radius: 12px; background-color: #051405; padding: 5px; }
         QScrollBar:vertical { border: none; background: #020a02; width: 10px; margin: 0px; }
         QScrollBar::handle:vertical { background: #020a02; min-height: 20px; border-radius: 5px; border: 1px solid #39ff14; }
         QScrollBar::handle:vertical:hover { background: #0a1f0a; }
@@ -1163,12 +1240,12 @@ class MainWindow(QMainWindow):
         
         # Auto-fit scale button
         self.btn_autofit = QPushButton("Auto-fit Scale to Cover Image", slider_widget)
-        self.btn_autofit.setStyleSheet("background-color: #2d2d2d; color: #007aff; border: 1px solid #007aff;")
+        self.btn_autofit.setObjectName("autofit_btn")
         slider_layout.addWidget(self.btn_autofit)
         
         # Optimize Seams (Avoid Text Cut) button
         self.btn_optimize_seams = QPushButton("Optimize Seams", slider_widget)
-        self.btn_optimize_seams.setStyleSheet("background-color: #2d2d2d; color: #38bdf8; border: 1px solid #38bdf8;")
+        self.btn_optimize_seams.setObjectName("optimize_seams_btn")
         slider_layout.addWidget(self.btn_optimize_seams)
         
         mode_b_layout.addWidget(slider_widget)
@@ -1179,10 +1256,20 @@ class MainWindow(QMainWindow):
         # --- 4. Export & Actions Group ---
         self.action_group = QGroupBox("Actions", sidebar)
         action_layout = QVBoxLayout(self.action_group)
+        
+        self.export_format_widget = QWidget(self.action_group)
+        export_format_layout = QHBoxLayout(self.export_format_widget)
+        export_format_layout.setContentsMargins(0, 0, 0, 0)
+        self.lbl_export_format = QLabel("Export Format:", self.export_format_widget)
+        self.combo_export_format = QComboBox(self.export_format_widget)
+        export_format_layout.addWidget(self.lbl_export_format)
+        export_format_layout.addWidget(self.combo_export_format)
+        
         self.btn_reset = QPushButton("Reset Paper Grid Layout", self.action_group)
         self.btn_reset.setObjectName("reset_btn")
         self.btn_export = QPushButton("Generate PDF", self.action_group)
         
+        action_layout.addWidget(self.export_format_widget)
         action_layout.addWidget(self.btn_reset)
         action_layout.addWidget(self.btn_export)
         sidebar_layout.addWidget(self.action_group)
@@ -1300,7 +1387,8 @@ class MainWindow(QMainWindow):
         
         # Action buttons
         self.btn_reset.clicked.connect(self.reset_layout)
-        self.btn_export.clicked.connect(self.export_to_pdf)
+        self.combo_export_format.currentIndexChanged.connect(self.update_export_button_text)
+        self.btn_export.clicked.connect(self.export_document)
         
         # Theme trigger connections
         self.action_theme_dark.triggered.connect(lambda: self.set_theme("dark"))
@@ -1544,8 +1632,21 @@ class MainWindow(QMainWindow):
         self.btn_optimize_seams.setText(t["optimize_btn"])
         
         self.action_group.setTitle(t["action_group_title"])
+        self.lbl_export_format.setText(t["lbl_export_format"])
+        
+        self.combo_export_format.blockSignals(True)
+        curr_export_fmt = self.combo_export_format.currentIndex()
+        self.combo_export_format.clear()
+        self.combo_export_format.addItems([
+            t["export_format_pdf"],
+            t["export_format_docx"],
+            t["export_format_pptx"]
+        ])
+        self.combo_export_format.setCurrentIndex(curr_export_fmt if curr_export_fmt >= 0 else 0)
+        self.combo_export_format.blockSignals(False)
+        
         self.btn_reset.setText(t["btn_reset"])
-        self.btn_export.setText(t["btn_export"])
+        self.update_export_button_text()
         
         self.btn_zoom_fit.setText(t["fit_all"])
         self.btn_zoom_width.setText(t["fit_width"])
@@ -2215,6 +2316,279 @@ class MainWindow(QMainWindow):
         self.btn_zoom_out.setIcon(QIcon(pixmap_out))
         self.btn_zoom_out.setIconSize(QSize(16, 16))
         self.btn_zoom_out.setText("")
+
+    def update_export_button_text(self):
+        t = TRANSLATIONS[self.current_lang]
+        fmt_idx = self.combo_export_format.currentIndex()
+        if fmt_idx == 0:
+            self.btn_export.setText(t["btn_export_pdf"])
+        elif fmt_idx == 1:
+            self.btn_export.setText(t["btn_export_docx"])
+        elif fmt_idx == 2:
+            self.btn_export.setText(t["btn_export_pptx"])
+
+    def export_document(self):
+        if self.pil_image is None:
+            return
+            
+        fmt_idx = self.combo_export_format.currentIndex()
+        if fmt_idx == 0:
+            self.export_to_pdf()
+        elif fmt_idx == 1:
+            self.export_to_word()
+        elif fmt_idx == 2:
+            self.export_to_ppt()
+
+    def export_to_word(self):
+        if self.pil_image is None:
+            return
+            
+        t = TRANSLATIONS[self.current_lang]
+        file_path, _ = QFileDialog.getSaveFileName(
+            self, t["btn_export_docx"], "", "Word Document (*.docx)"
+        )
+        if not file_path:
+            return
+            
+        if not file_path.lower().endswith('.docx'):
+            file_path += '.docx'
+            
+        self.status_bar.showMessage(t["status_exporting"].format(name=os.path.basename(file_path)))
+        QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
+        
+        try:
+            from docx import Document
+            from docx.shared import Mm, Pt
+            from docx.enum.text import WD_ALIGN_PARAGRAPH
+            from docx.enum.section import WD_ORIENT
+            
+            paper_w_mm, paper_h_mm = self.get_paper_size_mm()
+            m_left, m_right, m_top, m_bottom = self.get_margins_mm()
+            
+            doc = Document()
+            section = doc.sections[0]
+            
+            is_landscape = self.combo_orientation.currentIndex() == 1
+            if is_landscape:
+                section.orientation = WD_ORIENT.LANDSCAPE
+                section.page_width = Mm(paper_h_mm)
+                section.page_height = Mm(paper_w_mm)
+            else:
+                section.orientation = WD_ORIENT.PORTRAIT
+                section.page_width = Mm(paper_w_mm)
+                section.page_height = Mm(paper_h_mm)
+                
+            section.top_margin = Mm(m_top)
+            section.bottom_margin = Mm(m_bottom)
+            section.left_margin = Mm(m_left)
+            section.right_margin = Mm(m_right)
+            
+            printable_w = section.page_width - section.left_margin - section.right_margin
+            
+            pages_count = 0
+            
+            if self.radio_mode_a.isChecked():
+                dpi = 300.0
+                dpmm = dpi / 25.4
+                user_scale = self.spin_scale_pct.value() / 100.0
+                
+                scaled_w_mm = (self.image_width / dpmm) * user_scale
+                scaled_w_docx = Mm(min(scaled_w_mm, printable_w.mm))
+                
+                img_io = BytesIO()
+                self.pil_image.save(img_io, format="PNG")
+                img_io.seek(0)
+                
+                p = doc.add_paragraph()
+                p.paragraph_format.space_before = Pt(0)
+                p.paragraph_format.space_after = Pt(0)
+                p.paragraph_format.line_spacing = Pt(0)
+                
+                if self.chk_center_h.isChecked():
+                    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                else:
+                    p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+                    
+                r = p.add_run()
+                r.add_picture(img_io, width=scaled_w_docx)
+                pages_count = 1
+                
+            else:
+                if not self.page_items:
+                    raise Exception(t["msg_no_pages_defined"])
+                    
+                sorted_items = sorted(self.page_items, key=lambda x: (x.row_idx, x.col_idx))
+                
+                for idx, item in enumerate(sorted_items):
+                    pos = item.pos()
+                    rect = item.rect()
+                    
+                    x = int(pos.x())
+                    y = int(pos.y())
+                    w = int(rect.width())
+                    h = int(rect.height())
+                    
+                    x = max(0, min(x, self.image_width - 1))
+                    y = max(0, min(y, self.image_height - 1))
+                    w = max(1, min(w, self.image_width - x))
+                    h = max(1, min(h, self.image_height - y))
+                    
+                    crop_box = (x, y, x + w, y + h)
+                    cropped = self.pil_image.crop(crop_box)
+                    
+                    img_io = BytesIO()
+                    cropped.save(img_io, format="PNG")
+                    img_io.seek(0)
+                    
+                    if idx > 0:
+                        doc.add_page_break()
+                        
+                    p = doc.add_paragraph()
+                    p.paragraph_format.space_before = Pt(0)
+                    p.paragraph_format.space_after = Pt(0)
+                    p.paragraph_format.line_spacing = Pt(0)
+                    
+                    if self.chk_center_h.isChecked():
+                        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    else:
+                        p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+                        
+                    r = p.add_run()
+                    r.add_picture(img_io, width=printable_w)
+                    pages_count += 1
+                    
+            doc.save(file_path)
+            
+            QMessageBox.information(
+                self, t["msg_success_title"],
+                t["msg_export_success_docx"].format(pages=pages_count, path=file_path)
+            )
+            self.status_bar.showMessage(t["status_exported_docx"].format(name=os.path.basename(file_path)), 5000)
+            
+        except Exception as e:
+            QMessageBox.critical(self, t["msg_export_failed_title"], f"Failed to export Word:\n{str(e)}")
+            self.status_bar.showMessage(t["status_export_failed"])
+        finally:
+            QApplication.restoreOverrideCursor()
+
+    def export_to_ppt(self):
+        if self.pil_image is None:
+            return
+            
+        t = TRANSLATIONS[self.current_lang]
+        file_path, _ = QFileDialog.getSaveFileName(
+            self, t["btn_export_pptx"], "", "PowerPoint Presentation (*.pptx)"
+        )
+        if not file_path:
+            return
+            
+        if not file_path.lower().endswith('.pptx'):
+            file_path += '.pptx'
+            
+        self.status_bar.showMessage(t["status_exporting"].format(name=os.path.basename(file_path)))
+        QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
+        
+        try:
+            from pptx import Presentation
+            from pptx.util import Mm
+            
+            paper_w_mm, paper_h_mm = self.get_paper_size_mm()
+            m_left, m_right, m_top, m_bottom = self.get_margins_mm()
+            
+            prs = Presentation()
+            
+            is_landscape = self.combo_orientation.currentIndex() == 1
+            if is_landscape:
+                prs.slide_width = Mm(paper_h_mm)
+                prs.slide_height = Mm(paper_w_mm)
+            else:
+                prs.slide_width = Mm(paper_w_mm)
+                prs.slide_height = Mm(paper_h_mm)
+                
+            blank_slide_layout = prs.slide_layouts[6]
+            slides_count = 0
+            
+            if self.radio_mode_a.isChecked():
+                dpi = 300.0
+                dpmm = dpi / 25.4
+                user_scale = self.spin_scale_pct.value() / 100.0
+                
+                scaled_w_mm = (self.image_width / dpmm) * user_scale
+                scaled_h_mm = (self.image_height / dpmm) * user_scale
+                
+                printable_w_mm = prs.slide_width.mm - m_left - m_right
+                printable_h_mm = prs.slide_height.mm - m_top - m_bottom
+                
+                scale_down = min(1.0, printable_w_mm / scaled_w_mm, printable_h_mm / scaled_h_mm)
+                scaled_w_mm *= scale_down
+                scaled_h_mm *= scale_down
+                
+                if self.chk_center_h.isChecked():
+                    left_mm = m_left + (printable_w_mm - scaled_w_mm) / 2
+                else:
+                    left_mm = m_left
+                    
+                if self.chk_center_v.isChecked():
+                    top_mm = m_top + (printable_h_mm - scaled_h_mm) / 2
+                else:
+                    top_mm = m_top
+                    
+                img_io = BytesIO()
+                self.pil_image.save(img_io, format="PNG")
+                img_io.seek(0)
+                
+                slide = prs.slides.add_slide(blank_slide_layout)
+                slide.shapes.add_picture(img_io, Mm(left_mm), Mm(top_mm), width=Mm(scaled_w_mm), height=Mm(scaled_h_mm))
+                slides_count = 1
+                
+            else:
+                if not self.page_items:
+                    raise Exception(t["msg_no_pages_defined"])
+                    
+                sorted_items = sorted(self.page_items, key=lambda x: (x.row_idx, x.col_idx))
+                
+                for item in sorted_items:
+                    pos = item.pos()
+                    rect = item.rect()
+                    
+                    x = int(pos.x())
+                    y = int(pos.y())
+                    w = int(rect.width())
+                    h = int(rect.height())
+                    
+                    x = max(0, min(x, self.image_width - 1))
+                    y = max(0, min(y, self.image_height - 1))
+                    w = max(1, min(w, self.image_width - x))
+                    h = max(1, min(h, self.image_height - y))
+                    
+                    crop_box = (x, y, x + w, y + h)
+                    cropped = self.pil_image.crop(crop_box)
+                    
+                    img_io = BytesIO()
+                    cropped.save(img_io, format="PNG")
+                    img_io.seek(0)
+                    
+                    slide = prs.slides.add_slide(blank_slide_layout)
+                    
+                    printable_w_mm = prs.slide_width.mm - m_left - m_right
+                    printable_h_mm = prs.slide_height.mm - m_top - m_bottom
+                    
+                    slide.shapes.add_picture(img_io, Mm(m_left), Mm(m_top), width=Mm(printable_w_mm), height=Mm(printable_h_mm))
+                    slides_count += 1
+                    
+            prs.save(file_path)
+            
+            QMessageBox.information(
+                self, t["msg_success_title"],
+                t["msg_export_success_pptx"].format(pages=slides_count, path=file_path)
+            )
+            self.status_bar.showMessage(t["status_exported_pptx"].format(name=os.path.basename(file_path)), 5000)
+            
+        except Exception as e:
+            QMessageBox.critical(self, t["msg_export_failed_title"], f"Failed to export PowerPoint:\n{str(e)}")
+            self.status_bar.showMessage(t["status_export_failed"])
+        finally:
+            QApplication.restoreOverrideCursor()
 
     def export_to_pdf(self):
         if self.pil_image is None:
