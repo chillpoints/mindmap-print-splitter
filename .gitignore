@@ -43,3 +43,13 @@ env/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Zips and archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Local test outputs
+dummy_map.png
+integration_test_out.*
